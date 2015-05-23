@@ -44,16 +44,16 @@ Octopress中上传的文章都是使用Markdown书写的，本文也不例外。
 标题为什么叫`坎坷之路，终抵群星`呢？这是NASA在阿波罗1号发生事故后为纪念三名牺牲的航天员的两块纪念铭牌其中一块上面的一句话:
 
 > IN MEMORY
->
-> OF
-> THOSE WHO MADE THE ULTIMATE SACRIFICE
-> SO OTHERS COULD REACH FOR THE STARS
->
-> AD ASTRA PER ASPERA
-> (A ROUGH ROAD LEADS TO THE STARS)
->
-> GOD SPEED TO THE CREW
-> OF
-> APOLLO 1
+>   
+> OF  
+> THOSE WHO MADE THE ULTIMATE SACRIFICE   
+> SO OTHERS COULD REACH FOR THE STARS   
+>   
+> AD ASTRA PER ASPERA   
+> (A ROUGH ROAD LEADS TO THE STARS)   
+>   
+> GOD SPEED TO THE CREW   
+> OF   
+> APOLLO 1   
 
 这句话其实是一句拉丁语`AD ASTRA PER ASPERA`，英文翻译为`A ROUGH ROAD LEADS TO THE STARS`。通往璀璨星空的路总是会遇到坡坎挫折，但是走过崎岖坎坷的路终将抵达灿烂的星空。人类在太空探索上是这样，在其他任何领域也都是这样。
