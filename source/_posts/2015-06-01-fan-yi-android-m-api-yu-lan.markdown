@@ -151,3 +151,22 @@ chooser.ChooserTargetService</code>的类。在manifest中声明你的<code>Choo
 * 为低版本设计的应用，[getButtonState()]("http://developer.android.com/reference/android/view/MotionEvent.html#getButtonState()")方法返回[BUTTON_SECONDARY](http://developer.android.com/reference/android/view/MotionEvent.html#BUTTON_SECONDARY)(当主要压感按钮被按下)，[BUTTON_TERTIARY](http://developer.android.com/reference/android/view/MotionEvent.html#BUTTON_TERTIARY)(当次级压感按钮被按下)，或者同时返回两者。
 
 ### 提升蓝牙低功耗扫描
+---
+如果你的应用提供了蓝牙低功耗扫描，你可以使用新的`android.bluetooth.le.ScanSettings.Builder.setCallbackType()`方法来标明你只希望接收到的能够最先匹配设置了[ScanFilter](http://developer.android.com/reference/android/bluetooth/le/ScanFilter.html)的广播包，当这种包已经有一段时间没有接收到了。这一扫描方式比以前平台版本提供的更高效节能。
+
+### 热点2.0第一版支持
+---
+预览版在Nexus 6和Nexus 9上提高了对热点2.0第一版规格的支持。使用[WifiEnterpriseConfig](http://developer.android.com/reference/android/net/wifi/WifiEnterpriseConfig.html)类的方法，例如`setPlmn()`和`setRealm()`来在你的应用中使用热点2.0的证书。在[WifiConfiguration](http://developer.android.com/reference/android/net/wifi/WifiConfiguration.html)对象中，你可以设置[FQDN](http://developer.android.com/reference/android/net/wifi/WifiConfiguration.html#FQDN)和`providerFriendlyName`的值。如果指定网络是热点2.0的接入点，新的`ScanResult.PasspointNetwork`属性会表明。
+
+### 4K显示模式
+---
+安卓平台现在允许应用进行在兼容的平台显示分辨率提升到了4K渲染。使用新的`android.view.Display.Mode`的API来查询当前的物理分辨率。如果UI以低逻辑分辨率绘制但是放大到大尺寸物理分辨率显示时，请注意`Display.Mode.getPhysicalWidth()`方法返回值会跟[getSize()]("http://developer.android.com/reference/android/view/Display.html#getSize(android.graphics.Point)")报告的逻辑分辨率不一致。
+
+你可以通过在你的应用窗口中设置`WindowManager.LayoutParams.preferredDisplayModeId`属性来在应用运行时请求系统更改物理分辨率。这个功能在你想切换到4K分辨率时非常有用。当处于4K模式时，UI会继续使用原始分辨率进行渲染（如1080P）然后放大到4K，但是[SurfaceView](http://developer.android.com/reference/android/view/SurfaceView.html)对象会按照本地分辨率来显示内容。
+
+### 可设置主题的ColorStateLists
+---
+现在，运行M预览版的设备在[ColorStateList](http://developer.android.com/reference/android/content/res/ColorStateList.html)中已经支持主题属性。[getColorStateList()]("http://developer.android.com/reference/android/content/res/Resources.html#getColorStateList(int)")和[getColor()]("http://developer.android.com/reference/android/content/res/Resources.html#getColor(int)")方法已经被废弃了。如果你要调用这些API，调用新的`Context.getColorStateList()`或`Context.getColor()`来代替原来的方法。这些方法还可以在v4 appcompat库中通过[ContextCompat](http://developer.android.com/reference/android/support/v4/content/ContextCompat.html)调用。
+
+### 音频功能
+---
