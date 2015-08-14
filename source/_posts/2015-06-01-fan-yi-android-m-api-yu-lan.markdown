@@ -4,7 +4,7 @@ title: "[翻译]Android M API 概览"
 date: 2015-06-01 21:59:06 +0800
 comments: true
 categories: 
-published: true
+published: false
 ---
 本文翻译自Android开发者网站[http://developer.android.com/preview/api-overview.html](http://developer.android.com/preview/api-overview.html)
 
@@ -168,5 +168,15 @@ chooser.ChooserTargetService</code>的类。在manifest中声明你的<code>Choo
 ---
 现在，运行M预览版的设备在[ColorStateList](http://developer.android.com/reference/android/content/res/ColorStateList.html)中已经支持主题属性。[getColorStateList()]("http://developer.android.com/reference/android/content/res/Resources.html#getColorStateList(int)")和[getColor()]("http://developer.android.com/reference/android/content/res/Resources.html#getColor(int)")方法已经被废弃了。如果你要调用这些API，调用新的`Context.getColorStateList()`或`Context.getColor()`来代替原来的方法。这些方法还可以在v4 appcompat库中通过[ContextCompat](http://developer.android.com/reference/android/support/v4/content/ContextCompat.html)调用。
 
-### 音频功能
+### 视频功能
+---
+预览版为视频功能API加入了新的功能，包括以下几处：
+
+* 新的`android.media.MediaSync`类用于帮助同步渲染音频与视频流。音频buffer会以非阻塞的方式通过回调进行返回。而且还支持动态播放率。
+* 新的`MediaDrm.EVENT_SESSION_RECLAIMED`事件，它标明明应用打开的回话已经被资源管理器回收。如果你的应用使用了DRM回话，那么你必须处理这一事件来确保不要使用已经回收的回话。
+* 新的`MediaCodec.CodecException.ERROR_RECLAIMED`错误码，它标明资源管理器回收了解码器使用的媒体资源。如果遭遇这一异常，解码器必须被释放，因为它已经处在中止状态。
+* 新的`MediaCodecInfo.CodecCapabilities.getMaxSupportedInstances()`接口来获取解码器实例支持的最大并发数的相关提示。
+* 新的`MediaPlayer.setPlaybackParams()`方法来设置快或者慢动作的媒体播放速率。它同时会自动加快或减慢音频的播放速率。
+
+### 相机功能
 ---
