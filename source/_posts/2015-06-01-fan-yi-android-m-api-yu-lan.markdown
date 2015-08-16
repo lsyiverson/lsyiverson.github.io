@@ -180,3 +180,24 @@ chooser.ChooserTargetService</code>的类。在manifest中声明你的<code>Choo
 
 ### 相机功能
 ---
+预览版包含以下访问相机闪光灯和相机图像再处理的API：
+#### 闪光灯API
+如果相机设备包含闪光灯模组，你可以调用`CameraManager.setTorchMode()`方法来在不打开相机的情况下打开或关闭火炬模式。应用没有对闪光灯模组和相机设备的独占式请求。火炬模式将会在相机不可用时，或者在其他相机资源保持火炬模式变为不可用时关闭并且停用。其他应用也可以通过调用`setTorchMode()`来关闭火炬模式。当最后一个应用关闭火炬模式后，火炬模式将会关闭。
+
+你可以通过调用`CameraManager.registerTorchCallback()`方法来注册火炬模式状态改变的回调。当回调第一次注册时，他会立即返回当前已知的所有包含闪光灯模组的相机设备。如果火炬模式成功的开启或关闭，`CameraManager.TorchCallback.onTorchModeChanged()`方法将会被调用。
+#### 再处理API
+[Camera2](http://developer.android.com/reference/android/hardware/camera2/package-summary.html) API扩展了对YUV和私有不透明格式图像的再处理。通过调用[getCameraCharacteristics()]("http://developer.android.com/reference/android/hardware/camera2/CameraManager.html#getCameraCharacteristics(java.lang.String)")来检查`REPROCESS_MAX_CAPTURE_STALL`关键字来判断是否具备再处理能力。如果设备支持再处理，你可以通过调用`CameraDevice.createReprocessableCaptureSession()`来创建一个可以再处理的相机捕获会话，并且创建输入缓冲再处理请求。
+
+使用`android.media.ImageWriter`来连接输入缓冲流到相机再处理输入。下面是如果拿到一个空缓冲的编程模式：
+
+1. 调用`ImageWriter.dequeueInputImage()`方法。
+2. 将数据填入输入缓冲。
+3. 通过调用`ImageWriter.queueInputImage()`方法将缓冲区发送到相机。
+
+如果你将`ImageWriter`同一个`android.graphics.ImageFormat.PRIVATE`图片一起使用，你的应用将不能直接访问图像数据。取而代之的是通过不带缓冲拷贝的调用`ImageWriter.queueInputImage()`方法来直接传递`ImageFormat.PRIVATE`图像到`ImageWriter`.
+
+[ImageReader](http://developer.android.com/reference/android/media/ImageReader.html)类现在支持`android.graphics.ImageFormat.PRIVATE`格式的图片流。这种支持允许你的应用维持一个[ImageReader](http://developer.android.com/reference/android/media/ImageReader.html)输出图像队列，选择一个或多个图像，然后发送到`ImageWriter`做相机再处理。
+
+### Android for Work功能
+---
+
