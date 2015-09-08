@@ -3,8 +3,7 @@ layout: post
 title: "[翻译]Android M API 概览"
 date: 2015-06-01 21:59:06 +0800
 comments: true
-categories: 
-published: false
+categories: [android, M preview]
 ---
 本文翻译自Android开发者网站[http://developer.android.com/preview/api-overview.html](http://developer.android.com/preview/api-overview.html)
 
@@ -200,4 +199,42 @@ chooser.ChooserTargetService</code>的类。在manifest中声明你的<code>Choo
 
 ### Android for Work功能
 ---
+预览版包含以下Android for Work的API：
+
+* **对公司所有的单人使用设备的增强控制：**现在设备所有者可以控制一下设置来改进对公司所有单人使用的设备的管理（COSU)：
+    * 通过[setKeyguardDisabled()]("http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#setKeyguardDisabled(android.content.ComponentName,%20boolean)")方法来禁用或启用键盘锁。"
+    * 通过[setStatusBarDisabled()]("http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#setStatusBarDisabled(android.content.ComponentName,%20boolean)")方法来禁用或启用状态栏（包括快速设置、通知和滑动运用Google即时的手势)。
+    * 通过[UserManager](http://developer.android.com/reference/android/os/UserManager.html)的常量[DISALLOW_SAFE_BOOT](http://developer.android.com/reference/android/os/UserManager.html#DISALLOW_SAFE_BOOT)来禁用或启用安全启动。
+    * 使用[STAY_ON_WHILE_PLUGGED_IN](http://developer.android.com/reference/android/provider/Settings.Global.html#STAY_ON_WHILE_PLUGGED_IN)常量来防止屏幕在插入电源时关闭。
+
+* **设备所有者可以静默安装和卸载应用：**设备所有者现在可以使用[PackageInstaller](http://developer.android.com/reference/android/content/pm/PackageInstaller.html)API来静默安装卸载应用，这是独立于Google Play for Work的。你可以作为设备所有者在没有用户交互的情况下来获取和安装应用完成设备准备。这一功能在一键准备或者设备没有激活Google账户的情况下非常有用。
+
+* **静默的企业证书访问：**当一个应用调用[choosePrivateKeyAlias()]("http://developer.android.com/reference/android/security/KeyChain.html#choosePrivateKeyAlias(android.app.Activity,%20android.security.KeyChainAliasCallback,%20java.lang.String[],%20java.security.Principal[],%20java.lang.String,%20int,%20java.lang.String)")时，之前用户会被弹出提醒选择证书，现在个人或设备所有者可以调用[onChoosePrivateKeyAlias()]("http://developer.android.com/reference/android/app/admin/DeviceAdminReceiver.html#onChoosePrivateKeyAlias(android.content.Context,%20android.content.Intent,%20int,%20android.net.Uri,%20java.lang.String)")方法来向请求的应用程序静默地提供别名。这一功能让你能够在没有交互的情况下授权管理用户访问证书。
+
+* **自动接受系统更新：**通过使用[setSystemUpdatePolicy()]("http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#setSystemUpdatePolicy(android.content.ComponentName,%20android.app.admin.SystemUpdatePolicy)")设置系统更新策略。设备所有者现在可以自动接受系统更新，例如以防有大量的设备或者推迟更新并防止用户在长达30天里应用更新。此外，管理员还可以设置时间窗口。例如在数小时内大量设备不会在使用的时间。当系统更新可用时，系统将会检查工作策略控制应用是否设置了系统更新策略，并依据此进行操作。
+
+* **授权证书安装：**配置和设备所有者现在可以向第三方应用授予调用[DevicePolicyManager](http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html)API来管理证书的能力：
+    * [getInstalledCaCerts()]("http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#getInstalledCaCerts(android.content.ComponentName)")
+    * [hasCaCertInstalled()]("http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#hasCaCertInstalled(android.content.ComponentName,%20byte[])")
+    * [installCaCert()]("http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#installCaCert(android.content.ComponentName,%20byte[])")
+    * [uninstallCaCert()]("http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#uninstallCaCert(android.content.ComponentName,%20byte[])")
+    * [uninstallAllUserCaCerts()]("http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#uninstallAllUserCaCerts(android.content.ComponentName)")
+    * [installKeyPair()]("http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#installKeyPair(android.content.ComponentName,%20java.security.PrivateKey,%20java.security.cert.Certificate,%20java.lang.String)")
+
+* **数据使用跟踪：**配置和设备所有者现在可以通过新的[NetworkStatsManager](http://developer.android.com/reference/android/app/usage/NetworkStatsManager.html)方法来查询在**设置->数据**中可见的数据使用情况统计。配置所有者自动授权查询他们管理的配置上管理的数据，而设备所有者访问被管理的主要用户的数据使用情况。
+
+* **运行时权限管理：**配置和权限管理员可以为所有使用了[setPermissionPolicy()]("http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#setPermissionPolicy(android.content.ComponentName,%20int)")设置了运行中请求的应用设置权限政策，而不是提醒用户授权或是静默地自动授权或拒绝授权。如果后者政策被设置了，用户将不能在**设置**中的应用权限屏幕更改由配置或设备管理员设定的选项。
+
+* **在设置中的VPN：**VPN应用现在可以在**设置->更多->VPN**。此外，伴随VPN使用情况的通知消息现在还会指明VPN是如何配置的。对一个配置所有者，通知消息会表明VPN是否被一个已管理的配置文件、个人配置文件或者两者一起所配置。对一个设备所有者来说，通知消息会表明VPN是否是为整个设备所配置。
+
+* **工作状态通知：**无论什么时候一个管理配置文件里面的应用在前台活动时都会出现一个公文包通知栏图标在状态栏。此外，如果一个设备是被一个管理配置文件中的应用活动直接解锁的话，一个toast消息将会通知用户他们处于工作配置中了。
+
+
+| 想要查看所有M预览版中的API更改，请查阅[API差异报告](http://developer.android.com/preview/download.html)
+
+
+
+
+
+
 
