@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<meta  lang="zh-CN" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#fff" id="theme-color">
+  <link rel="icon" href="/images/logo.jpg">
+  <title>Siyang Li's blog</title>
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+    var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+      }
+    };
+    setDarkmode();
+  </script>
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  </script>
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_vpj3dq9ceqa.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  
+  <link rel="preload" href="//cdn.jsdelivr.net/npm/fslightbox@3.1.0/index.min.js" as="script">
+  
+  
+  <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_vpj3dq9ceqa.css">
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <div class="wrapper">
+    
+    <nav class="navbar">
+  <div class="navbar-logo">
+    <span class="navbar-logo-main">
+      
+      <img class="navbar-logo-img" src="/images/logo.jpg">
+      
+      <span class="navbar-logo-dsc">Siyang Li's blog</span>
+    </span>
+  </div>
+  <div class="navbar-menu">
+    
+    <a href="/" class="navbar-menu-item">首页 </a>
+    
+    <a href="/archives" class="navbar-menu-item">归档 </a>
+    
+    <a href="/tags" class="navbar-menu-item">标签 </a>
+    
+    <a href="/categories" class="navbar-menu-item">分类 </a>
+    
+    <a class="navbar-menu-item darknavbar" id="dark"><i class="iconfont icon-weather"></i></a>
+  </div>
+</nav>
+    
+    <div class="section-wrap">
+      <div class="container">
+        <div class="columns">
+          <main class="main-column">
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      [翻译]Android M API 概览
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2015-06-01T01:59:06.000Z" style="display: flex; align-items: center;">
+      <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+      <span>2015-06-01</span>
+    </time>
+    
+    <span class="dot"></span>
+    
+    <a href="/categories/Android/" class="post-meta-link">Android</a>
+    
+    <a href="/categories/Mobile/" class="post-meta-link">Mobile</a>
+    
+    
+    
+    <span class="dot"></span>
+    <span>4.7k 字</span>
+    
+  </div>
+  
+  <div class="post-meta post-show-meta" style="margin-top: -10px;">
+    <div style="display: flex; align-items: center;">
+      <i class="iconfont icon-biaoqian" style="margin-right: 2px; font-size: 1.15rem;"></i>
+      
+      
+        <a href="/tags/Android/" class="post-meta-link">Android</a>
+      
+      
+      <span class="dot"></span>
+      
+        <a href="/tags/M-preview/" class="post-meta-link">M-preview</a>
+      
+    </div>
+  </div>
+  
+  </header>
+  <div id="section" class="post-content">
+    <p>本文翻译自Android开发者网站<a target="_blank" rel="noopener" href="http://developer.android.com/preview/api-overview.html">http://developer.android.com/preview/api-overview.html</a></p>
+<h2 id="API概览"><a href="#API概览" class="headerlink" title="API概览"></a>API概览</h2><p>Android M开发者预览版让你能够抢先了解即将发行的Android平台。新版本为用户和应用开发者提供了新的功能。这篇文档介绍了最主要的几个API。</p>
+<p>M开发者预览版主要针对<strong>早期适配开发者</strong>和<strong>测试人员</strong>。如果你想直接影响Android框架开发，<a target="_blank" rel="noopener" href="http://developer.android.com/preview/setup-sdk.html">试一试Android M开发者预览版</a>，然后把你的反馈发送给我们！</p>
+<blockquote>
+<p><strong>警告：</strong>不要把使用M开发者预览版的应用发布到Play商城</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>注意：</strong>这篇文档有可能会引用到没有在<a target="_blank" rel="noopener" href="http://developer.android.com/">developer.android.com</a>的相关材料中涉及的类和方法。这些API元素会在文档中以<code>代码样式</code>标出。想要查看这些元素的早期文档，请下载<a target="_blank" rel="noopener" href="http://developer.android.com/preview/download.html#docs">预览版参考文档</a></p>
+</blockquote>
+<h4 id="重要行为变更"><a href="#重要行为变更" class="headerlink" title="重要行为变更"></a>重要行为变更</h4><p>如果你以前曾经发布过Android app，请注意你的app可能会受平台相关的变化影响。<br>请查看<a target="_blank" rel="noopener" href="http://developer.android.com/preview/behavior-changes.html">行为变更</a>获取完整信息。</p>
+<h3 id="应用链接"><a href="#应用链接" class="headerlink" title="应用链接"></a>应用链接</h3><hr>
+<p>预览版通过应用链接增强了Android的Intent系统。这个功能允许将一个应用和你拥有的网络域名关联起来。基于这一关联，系统会选择默认打开一个特殊链接的应用，从而跳过弹出提示让用户选择的步骤。想了解如何实现这一功能，请查看<a target="_blank" rel="noopener" href="http://developer.android.com/preview/features/app-linking.html">应用链接</a>。</p>
+<h3 id="应用自动备份"><a href="#应用自动备份" class="headerlink" title="应用自动备份"></a>应用自动备份</h3><hr>
+<p>系统现在提供自动地所有数据备份和恢复功能。这种行为在针对M开发的应用上默认为开启的；你并不需要添加额外的代码。如果用户删除了Google账号，那么他们的备份数据也同时被删除了。了解这一功能是如何工作的和如何配置文件系统上哪些是需要备份的，请查看<a target="_blank" rel="noopener" href="http://developer.android.com/preview/backup/index.html">应用自动备份</a>。</p>
+<h3 id="授权认证"><a href="#授权认证" class="headerlink" title="授权认证"></a>授权认证</h3><hr>
+<p>预览版提供了新的API允许你在支持的设备上通过指纹来对用户进行授权认证，并且会检查用户最近一次使用的是哪种设备解锁机制（比如说锁屏密码）。查看<a target="_blank" rel="noopener" href="http://developer.android.com/training/articles/keystore.html">Android密钥系统</a>来集成使用这些API。</p>
+<h4 id="指纹认证"><a href="#指纹认证" class="headerlink" title="指纹认证"></a>指纹认证</h4><p>通过扫描指纹的方式来认证用户，需要得到新增加的<code>android.hardware.fingerprint.FingerprintManager</code>类的实例，然后调用<code>FingerprintManager.authenticate()</code>方法。你的应用必须运行在拥有指纹传感器的兼容的设备上。在你的应用上你必须实现指纹认证流程的用户界面，并且必须使用标准的Android指纹图标。Android指纹图标（<code>c_fp_40px.png</code>）包含在<a target="_blank" rel="noopener" href="https://github.com/googlesamples/android-FingerprintDialog">示例应用</a>中。如果你同时开发多个使用指纹认证的应用，请注意每个应用都必须单独认证用户指纹。<br>要在你的应用中使用这些功能，首先要在manifest中添加<code>USE_FINGERPRINT</code>权限。</p>
+<pre class="highlight"><span class="line">&lt;uses-permission</span><br><span class="line">        android:name&#x3D;&quot;android.permission.USE_FINGERPRINT&quot; &#x2F;&gt;</span><br></pre>
+<div style="display: inline-block">
+<div style="float:left; width:60%">
+想要查看指纹认证的一个应用实现，请参考<a target="_blank" rel="noopener" href="https://github.com/googlesamples/android-FingerprintDialog">指纹对话框示例</a>。
+
+<p>如果你要测试这些功能，下面就是需要的步骤：</p>
+<ol>
+<li>如果你还没有安装Android SDK Tools 24.3版本，请先安装。</li>
+<li>在<strong>设置>安全>指纹</strong>中登记一个新的指纹，根据登记的指引执行即可。</li>
+<li>使用下面的命令来在一个模拟器上模拟指纹触摸事件。在解锁屏幕和你的应用中也是使用同样的命令来模拟指纹触摸事件。</li>
+</ol>
+
+<pre class="highlight"><span class="line">adb -e emu finger touch &lt;finger_id&gt;</span><br></pre>
+<p>在Windows上，你也许需要运行<code>telnet 127.0.0.1 <emulator-id></code>并在后面跟上<code>finger touch <finger_id></code>。</p>
+</div>    
+<div style="float:right; width:40%; text-align:right">
+<img src="/ srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/fingerprint-screen.png" class="lozad post-image"images/fingerprint-screen.png"/>
+</div>
+</div>
+
+
+<h4 id="确认凭据"><a href="#确认凭据" class="headerlink" title="确认凭据"></a>确认凭据</h4><p>你的应用可以基于用户最近一次是如何解锁设备的来认证用户。这种功能将用户从不得不记住很多单独额外的应用密码中解放出来，并且可以避免你实现你自己的认证用户界面。而这种认证用户的功能需要同使用公钥或私钥认证的实现结合起来。</p>
+<p>当创建**<a target="_blank" rel="noopener" href="http://developer.android.com/reference/javax/crypto/KeyGenerator.html">KeyGenerator</a><strong>或</strong><a target="_blank" rel="noopener" href="http://developer.android.com/reference/java/security/KeyPairGenerator.html">KeyPairGenerator</a>**时调用新的<code>android.security.keystore.KeyGenParameterSpec.setUserAuthenticationValidityDurationSeconds</code>方法来在用户成功认证后设置一个重用这个相同密钥的超时时长。这个功能目前是使用的是对称加密操作。</p>
+<p>为了避免频繁的显示重新认证对话框——你的应用应该在第一次和超时后使用加密对象，在你的应用中通过[createConfirmDeviceCredentialIntent()](“<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/app/KeyguardManager.html#createConfirmDeviceCredentialIntent">http://developer.android.com/reference/android/app/KeyguardManager.html#createConfirmDeviceCredentialIntent</a>(java.lang.CharSequence, java.lang.CharSequence)”)来重新认证用户。</p>
+<p>想要查看这个功能的实现，请参考<a target="_blank" rel="noopener" href="https://github.com/googlesamples/android-ConfirmCredential">确认凭据示例</a>。</p>
+<h3 id="直接分享"><a href="#直接分享" class="headerlink" title="直接分享"></a>直接分享</h3><hr>
+<div style="display: inline-block">
+<div style="float:left; width:60%">
+<p>预览版提供了可以快速直接分享到用户的API。你可以定义<em>直接分享目标</em>来运行你应用中的指定Activity.直接分享目标通过<em>分享</em>菜单来呈现给用户。这一功能允许用户在其他应用中分享内容到指定目标，比如联系人。例如，直接分享目标可以启动一个其他社交应用中的Activity，通过这个应用可以让用户直接分享内容到指定用户和社团。</p>
+<p>使用直接分享目标功能你需要定义一个继承自<code>android.service. 
+chooser.ChooserTargetService</code>的类。在manifest中声明你的<code>ChooserTargetService</code>。在声明里面，还需要标明<code>BIND_CHOOSER_TARGET_SERVICE</code>权限和包含<code>SERVICE_INTERFACE</code>action的Intent Filter。</p>
+</div>
+<div style="float:right; width:40%; text-align:right">
+<img src="/ srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/direct-share-screen.png" class="lozad post-image"images/direct-share-screen.png"/>
+</div>
+</div>
+下面的例子展示了你应该如何在你的manifest中声明`ChooserTargetService`。
+
+<pre class="highlight"><span class="line">&lt;service android:name&#x3D;&quot;.ChooserTargetService&quot;</span><br><span class="line">        android:label&#x3D;&quot;@string&#x2F;service_name&quot;</span><br><span class="line">        android:permission&#x3D;&quot;android.permission.BIND_CHOOSER_TARGET_SERVICE&quot;&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;action android:name&#x3D;&quot;android.service.chooser.ChooserTargetService&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;intent-filter&gt;</span><br><span class="line">&lt;&#x2F;service&gt;</span><br></pre>
+<p>在manifest中每一个你想要暴露给<code>ChooserTargetService</code>的Activity加上带有<code>android.service.chooser.chooser_target_service</code>名称的<code>&lt;meta-data&gt;</code>元素。</p>
+<pre class="highlight"><span class="line">&lt;activity android:name&#x3D;&quot;.MyShareActivity”</span><br><span class="line">        android:label&#x3D;&quot;@string&#x2F;share_activity_label&quot;&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;action android:name&#x3D;&quot;android.intent.action.SEND&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;intent-filter&gt;</span><br><span class="line">&lt;meta-data</span><br><span class="line">        android:name&#x3D;&quot;android.service.chooser.chooser_target_service&quot;</span><br><span class="line">        android:value&#x3D;&quot;.ChooserTargetService&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;activity&gt;</span><br></pre>
+<h3 id="语音交互"><a href="#语音交互" class="headerlink" title="语音交互"></a>语音交互</h3><hr>
+<p>预览版提供了新的语音交互API，同<a target="_blank" rel="noopener" href="https://developers.google.com/voice-actions/">语音指令</a>一起，允许你在应用中构建会话式的语音体验。调用<code>android.app.Activity.isVoiceInteraction()</code>方法来确定你的Activity是否是被语音指令启动的。如果是的话，你的应用可以使用<code>ndroid.app.VoiceInteractor</code>类来向用户请求语音确认，从列表中选择选项以及其他。想了解更多语音指令的实现，请查看<a target="_blank" rel="noopener" href="https://developers.google.com/voice-actions/interaction/">语音指令开发者网站</a></p>
+<h3 id="助手功能API"><a href="#助手功能API" class="headerlink" title="助手功能API"></a>助手功能API</h3><hr>
+<p>预览版给用户提供了一个新的方式，通过助手来同你的应用交互。要使用这一功能，用户必须允许助手使用当前的上下文。一旦允许后，用户可以在任意应用中通过长按<strong>Home</strong>键来唤起助手。</p>
+<p>你的应用可以通过设置<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/view/WindowManager.LayoutParams.html#FLAG_SECURE">FLAG_SECURE</a>标志来选择不向助手分享当前上下文。除了平台本身传递给助手的信息之外，你的应用还可以通过新的<code>android.app.Activity.AssistContent</code>类来分享额外信息。</p>
+<p>要想分享你的应用中的额外信息，请跟随以下步骤：   </p>
+<ol>
+<li>实现<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/app/Application.OnProvideAssistDataListener.html">Application.OnProvideAssistDataListener</a>接口。   </li>
+<li>使用<a href="%22http://developer.android.com/reference/android/app/Application.html#registerOnProvideAssistDataListener(android.app.Application.OnProvideAssistDataListener)%22">registerOnProvideAssistDataListener()</a>注册这个接口。   </li>
+<li>为了提供基于上下文的活动行为，覆写<a href="%22http://developer.android.com/reference/android/app/Activity.html#onProvideAssistData(android.os.Bundle)%22">onProvideAssistData()</a>回掉调，或者可以选择使用新的<code>Activity.onProvideAssistContent()</code>回调。</li>
+</ol>
+<h3 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h3><hr>
+<p>预览版添加了下列与通知相关的API更改：</p>
+<ul>
+<li>新的<code>NotificationListenerService.INTERRUPTION_FILTER_ALARMS</code>过滤级别，用以同新的<em>只允许闹钟</em>的勿扰模式匹配。   </li>
+<li>新的<code>Notification.CATEGORY_REMINDER</code>分类值，用于将用户计划的提醒同其他的提醒(<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/app/Notification.html#CATEGORY_EVENT">CATEGORY_EVENT</a>)和闹钟(<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/app/Notification.html#CATEGORY_ALARM">CATEGORY_ALARM</a>)区分开来.</li>
+<li>新的<code>android.graphics.drawable.Icon</code>类，可以通过使用<code>Notification.Builder.setSmallIcon(Icon)</code>和<code>Notification.Builder.setLargeIcon(Icon)</code>方法添加到你的通知上去。   </li>
+<li>新的<code>NotificationManager.getActiveNotifications()</code>方法，以允许你的应用可以可以找出哪些通知是处于活动状态的。想要查看使用了这一功能的应用实现，查看<a target="_blank" rel="noopener" href="https://github.com/googlesamples/android-ActiveNotifications">活动通知示例</a>。</li>
+</ul>
+<h3 id="蓝牙压感支持"><a href="#蓝牙压感支持" class="headerlink" title="蓝牙压感支持"></a>蓝牙压感支持</h3><hr>
+<p>预览版改进提升了对使用蓝牙压感输入的支持。用户可以将兼容的蓝牙压感设备同他们的手机或者平板配对连接。当连接后，从触摸屏获得的位置信息将混合压感设备的压力和按钮信息，以提供比单单使用触摸屏更大范围的表达方式。你的应用可以通过在Activity中注册新的<code>View.onStylusButtonPressListener</code>和<code>GestureDetector.OnStylusButtonPressListener</code>回调来监听压感按钮按下事件以出发次级行为。</p>
+<p>使用<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/view/MotionEvent.html">MotionEvent</a>方法和常量来识别压感按钮交互：</p>
+<ul>
+<li>如果用户使用压感笔来点击你应用屏幕上的按钮，<a href="%22http://developer.android.com/reference/android/view/MotionEvent.html#getToolType(int)%22">getTooltype()</a>方法将返回<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/view/MotionEvent.html#TOOL_TYPE_STYLUS">TOOL_TYPE_STYLUS</a>。</li>
+<li>为Android M设计的应用，<a href="%22http://developer.android.com/reference/android/view/MotionEvent.html#getButtonState()%22">getButtonState()</a>方法在用户点击主压感按钮时会返回<code>MotionEvent.STYLUS_BUTTON_PRIMARY</code>，如果是一个次级压感按钮被用户按下，同一个方法会返回<code>MotionEvent.STYLUS_BUTTON_SECONDARY</code>。如果用户同时按下两级按钮，这个方法会返回两个值或运算后的结果（<code>STYLUS_BUTTON_PRIMARY|STYLUS_BUTTON_SECONDARY</code>）。</li>
+<li>为低版本设计的应用，<a href="%22http://developer.android.com/reference/android/view/MotionEvent.html#getButtonState()%22">getButtonState()</a>方法返回<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/view/MotionEvent.html#BUTTON_SECONDARY">BUTTON_SECONDARY</a>(当主要压感按钮被按下)，<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/view/MotionEvent.html#BUTTON_TERTIARY">BUTTON_TERTIARY</a>(当次级压感按钮被按下)，或者同时返回两者。</li>
+</ul>
+<h3 id="提升蓝牙低功耗扫描"><a href="#提升蓝牙低功耗扫描" class="headerlink" title="提升蓝牙低功耗扫描"></a>提升蓝牙低功耗扫描</h3><hr>
+<p>如果你的应用提供了蓝牙低功耗扫描，你可以使用新的<code>android.bluetooth.le.ScanSettings.Builder.setCallbackType()</code>方法来标明你只希望接收到的能够最先匹配设置了<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/bluetooth/le/ScanFilter.html">ScanFilter</a>的广播包，当这种包已经有一段时间没有接收到了。这一扫描方式比以前平台版本提供的更高效节能。</p>
+<h3 id="热点2-0第一版支持"><a href="#热点2-0第一版支持" class="headerlink" title="热点2.0第一版支持"></a>热点2.0第一版支持</h3><hr>
+<p>预览版在Nexus 6和Nexus 9上提高了对热点2.0第一版规格的支持。使用<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/net/wifi/WifiEnterpriseConfig.html">WifiEnterpriseConfig</a>类的方法，例如<code>setPlmn()</code>和<code>setRealm()</code>来在你的应用中使用热点2.0的证书。在<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/net/wifi/WifiConfiguration.html">WifiConfiguration</a>对象中，你可以设置<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/net/wifi/WifiConfiguration.html#FQDN">FQDN</a>和<code>providerFriendlyName</code>的值。如果指定网络是热点2.0的接入点，新的<code>ScanResult.PasspointNetwork</code>属性会表明。</p>
+<h3 id="4K显示模式"><a href="#4K显示模式" class="headerlink" title="4K显示模式"></a>4K显示模式</h3><hr>
+<p>安卓平台现在允许应用进行在兼容的平台显示分辨率提升到了4K渲染。使用新的<code>android.view.Display.Mode</code>的API来查询当前的物理分辨率。如果UI以低逻辑分辨率绘制但是放大到大尺寸物理分辨率显示时，请注意<code>Display.Mode.getPhysicalWidth()</code>方法返回值会跟<a href="%22http://developer.android.com/reference/android/view/Display.html#getSize(android.graphics.Point)%22">getSize()</a>报告的逻辑分辨率不一致。</p>
+<p>你可以通过在你的应用窗口中设置<code>WindowManager.LayoutParams.preferredDisplayModeId</code>属性来在应用运行时请求系统更改物理分辨率。这个功能在你想切换到4K分辨率时非常有用。当处于4K模式时，UI会继续使用原始分辨率进行渲染（如1080P）然后放大到4K，但是<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/view/SurfaceView.html">SurfaceView</a>对象会按照本地分辨率来显示内容。</p>
+<h3 id="可设置主题的ColorStateLists"><a href="#可设置主题的ColorStateLists" class="headerlink" title="可设置主题的ColorStateLists"></a>可设置主题的ColorStateLists</h3><hr>
+<p>现在，运行M预览版的设备在<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/content/res/ColorStateList.html">ColorStateList</a>中已经支持主题属性。<a href="%22http://developer.android.com/reference/android/content/res/Resources.html#getColorStateList(int)%22">getColorStateList()</a>和<a href="%22http://developer.android.com/reference/android/content/res/Resources.html#getColor(int)%22">getColor()</a>方法已经被废弃了。如果你要调用这些API，调用新的<code>Context.getColorStateList()</code>或<code>Context.getColor()</code>来代替原来的方法。这些方法还可以在v4 appcompat库中通过<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/support/v4/content/ContextCompat.html">ContextCompat</a>调用。</p>
+<h3 id="视频功能"><a href="#视频功能" class="headerlink" title="视频功能"></a>视频功能</h3><hr>
+<p>预览版为视频功能API加入了新的功能，包括以下几处：</p>
+<ul>
+<li>新的<code>android.media.MediaSync</code>类用于帮助同步渲染音频与视频流。音频buffer会以非阻塞的方式通过回调进行返回。而且还支持动态播放率。</li>
+<li>新的<code>MediaDrm.EVENT_SESSION_RECLAIMED</code>事件，它标明明应用打开的回话已经被资源管理器回收。如果你的应用使用了DRM回话，那么你必须处理这一事件来确保不要使用已经回收的回话。</li>
+<li>新的<code>MediaCodec.CodecException.ERROR_RECLAIMED</code>错误码，它标明资源管理器回收了解码器使用的媒体资源。如果遭遇这一异常，解码器必须被释放，因为它已经处在中止状态。</li>
+<li>新的<code>MediaCodecInfo.CodecCapabilities.getMaxSupportedInstances()</code>接口来获取解码器实例支持的最大并发数的相关提示。</li>
+<li>新的<code>MediaPlayer.setPlaybackParams()</code>方法来设置快或者慢动作的媒体播放速率。它同时会自动加快或减慢音频的播放速率。</li>
+</ul>
+<h3 id="相机功能"><a href="#相机功能" class="headerlink" title="相机功能"></a>相机功能</h3><hr>
+<p>预览版包含以下访问相机闪光灯和相机图像再处理的API：</p>
+<h4 id="闪光灯API"><a href="#闪光灯API" class="headerlink" title="闪光灯API"></a>闪光灯API</h4><p>如果相机设备包含闪光灯模组，你可以调用<code>CameraManager.setTorchMode()</code>方法来在不打开相机的情况下打开或关闭火炬模式。应用没有对闪光灯模组和相机设备的独占式请求。火炬模式将会在相机不可用时，或者在其他相机资源保持火炬模式变为不可用时关闭并且停用。其他应用也可以通过调用<code>setTorchMode()</code>来关闭火炬模式。当最后一个应用关闭火炬模式后，火炬模式将会关闭。</p>
+<p>你可以通过调用<code>CameraManager.registerTorchCallback()</code>方法来注册火炬模式状态改变的回调。当回调第一次注册时，他会立即返回当前已知的所有包含闪光灯模组的相机设备。如果火炬模式成功的开启或关闭，<code>CameraManager.TorchCallback.onTorchModeChanged()</code>方法将会被调用。</p>
+<h4 id="再处理API"><a href="#再处理API" class="headerlink" title="再处理API"></a>再处理API</h4><p><a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/hardware/camera2/package-summary.html">Camera2</a> API扩展了对YUV和私有不透明格式图像的再处理。通过调用<a href="%22http://developer.android.com/reference/android/hardware/camera2/CameraManager.html#getCameraCharacteristics(java.lang.String)%22">getCameraCharacteristics()</a>来检查<code>REPROCESS_MAX_CAPTURE_STALL</code>关键字来判断是否具备再处理能力。如果设备支持再处理，你可以通过调用<code>CameraDevice.createReprocessableCaptureSession()</code>来创建一个可以再处理的相机捕获会话，并且创建输入缓冲再处理请求。</p>
+<p>使用<code>android.media.ImageWriter</code>来连接输入缓冲流到相机再处理输入。下面是如果拿到一个空缓冲的编程模式：</p>
+<ol>
+<li>调用<code>ImageWriter.dequeueInputImage()</code>方法。</li>
+<li>将数据填入输入缓冲。</li>
+<li>通过调用<code>ImageWriter.queueInputImage()</code>方法将缓冲区发送到相机。</li>
+</ol>
+<p>如果你将<code>ImageWriter</code>同一个<code>android.graphics.ImageFormat.PRIVATE</code>图片一起使用，你的应用将不能直接访问图像数据。取而代之的是通过不带缓冲拷贝的调用<code>ImageWriter.queueInputImage()</code>方法来直接传递<code>ImageFormat.PRIVATE</code>图像到<code>ImageWriter</code>.</p>
+<p><a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/media/ImageReader.html">ImageReader</a>类现在支持<code>android.graphics.ImageFormat.PRIVATE</code>格式的图片流。这种支持允许你的应用维持一个<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/media/ImageReader.html">ImageReader</a>输出图像队列，选择一个或多个图像，然后发送到<code>ImageWriter</code>做相机再处理。</p>
+<h3 id="Android-for-Work功能"><a href="#Android-for-Work功能" class="headerlink" title="Android for Work功能"></a>Android for Work功能</h3><hr>
+<p>预览版包含以下Android for Work的API：</p>
+<ul>
+<li><p><strong>对公司所有的单人使用设备的增强控制：</strong>现在设备所有者可以控制一下设置来改进对公司所有单人使用的设备的管理（COSU)：</p>
+<ul>
+<li>通过<a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#setKeyguardDisabled(android.content.ComponentName,%20boolean)%22">setKeyguardDisabled()</a>方法来禁用或启用键盘锁。”</li>
+<li>通过<a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#setStatusBarDisabled(android.content.ComponentName,%20boolean)%22">setStatusBarDisabled()</a>方法来禁用或启用状态栏（包括快速设置、通知和滑动运用Google即时的手势)。</li>
+<li>通过<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/os/UserManager.html">UserManager</a>的常量<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/os/UserManager.html#DISALLOW_SAFE_BOOT">DISALLOW_SAFE_BOOT</a>来禁用或启用安全启动。</li>
+<li>使用<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/provider/Settings.Global.html#STAY_ON_WHILE_PLUGGED_IN">STAY_ON_WHILE_PLUGGED_IN</a>常量来防止屏幕在插入电源时关闭。</li>
+</ul>
+</li>
+<li><p><strong>设备所有者可以静默安装和卸载应用：</strong>设备所有者现在可以使用<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/content/pm/PackageInstaller.html">PackageInstaller</a>API来静默安装卸载应用，这是独立于Google Play for Work的。你可以作为设备所有者在没有用户交互的情况下来获取和安装应用完成设备准备。这一功能在一键准备或者设备没有激活Google账户的情况下非常有用。</p>
+</li>
+<li><p><strong>静默的企业证书访问：</strong>当一个应用调用<a href="%22http://developer.android.com/reference/android/security/KeyChain.html#choosePrivateKeyAlias(android.app.Activity,%20android.security.KeyChainAliasCallback,%20java.lang.String%5B%5D,%20java.security.Principal%5B%5D,%20java.lang.String,%20int,%20java.lang.String)%22">choosePrivateKeyAlias()</a>时，之前用户会被弹出提醒选择证书，现在个人或设备所有者可以调用<a href="%22http://developer.android.com/reference/android/app/admin/DeviceAdminReceiver.html#onChoosePrivateKeyAlias(android.content.Context,%20android.content.Intent,%20int,%20android.net.Uri,%20java.lang.String)%22">onChoosePrivateKeyAlias()</a>方法来向请求的应用程序静默地提供别名。这一功能让你能够在没有交互的情况下授权管理用户访问证书。</p>
+</li>
+<li><p><strong>自动接受系统更新：</strong>通过使用<a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#setSystemUpdatePolicy(android.content.ComponentName,%20android.app.admin.SystemUpdatePolicy)%22">setSystemUpdatePolicy()</a>设置系统更新策略。设备所有者现在可以自动接受系统更新，例如以防有大量的设备或者推迟更新并防止用户在长达30天里应用更新。此外，管理员还可以设置时间窗口。例如在数小时内大量设备不会在使用的时间。当系统更新可用时，系统将会检查工作策略控制应用是否设置了系统更新策略，并依据此进行操作。</p>
+</li>
+<li><p><strong>授权证书安装：</strong>配置和设备所有者现在可以向第三方应用授予调用<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html">DevicePolicyManager</a>API来管理证书的能力：</p>
+<ul>
+<li><a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#getInstalledCaCerts(android.content.ComponentName)%22">getInstalledCaCerts()</a></li>
+<li><a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#hasCaCertInstalled(android.content.ComponentName,%20byte%5B%5D)%22">hasCaCertInstalled()</a></li>
+<li><a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#installCaCert(android.content.ComponentName,%20byte%5B%5D)%22">installCaCert()</a></li>
+<li><a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#uninstallCaCert(android.content.ComponentName,%20byte%5B%5D)%22">uninstallCaCert()</a></li>
+<li><a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#uninstallAllUserCaCerts(android.content.ComponentName)%22">uninstallAllUserCaCerts()</a></li>
+<li><a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#installKeyPair(android.content.ComponentName,%20java.security.PrivateKey,%20java.security.cert.Certificate,%20java.lang.String)%22">installKeyPair()</a></li>
+</ul>
+</li>
+<li><p><strong>数据使用跟踪：</strong>配置和设备所有者现在可以通过新的<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/app/usage/NetworkStatsManager.html">NetworkStatsManager</a>方法来查询在<strong>设置-&gt;数据</strong>中可见的数据使用情况统计。配置所有者自动授权查询他们管理的配置上管理的数据，而设备所有者访问被管理的主要用户的数据使用情况。</p>
+</li>
+<li><p><strong>运行时权限管理：</strong>配置和权限管理员可以为所有使用了<a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#setPermissionPolicy(android.content.ComponentName,%20int)%22">setPermissionPolicy()</a>设置了运行中请求的应用设置权限政策，而不是提醒用户授权或是静默地自动授权或拒绝授权。如果后者政策被设置了，用户将不能在<strong>设置</strong>中的应用权限屏幕更改由配置或设备管理员设定的选项。</p>
+</li>
+<li><p><strong>在设置中的VPN：</strong>VPN应用现在可以在<strong>设置-&gt;更多-&gt;VPN</strong>。此外，伴随VPN使用情况的通知消息现在还会指明VPN是如何配置的。对一个配置所有者，通知消息会表明VPN是否被一个已管理的配置文件、个人配置文件或者两者一起所配置。对一个设备所有者来说，通知消息会表明VPN是否是为整个设备所配置。</p>
+</li>
+<li><p><strong>工作状态通知：</strong>无论什么时候一个管理配置文件里面的应用在前台活动时都会出现一个公文包通知栏图标在状态栏。此外，如果一个设备是被一个管理配置文件中的应用活动直接解锁的话，一个toast消息将会通知用户他们处于工作配置中了。</p>
+</li>
+</ul>
+<p>| 想要查看所有M预览版中的API更改，请查阅<a target="_blank" rel="noopener" href="http://developer.android.com/preview/download.html">API差异报告</a></p>
+
+  </div>
+  <div>
+  
+  <div class="post-note note-warning copyright" style="margin-top: 42px">
+    <p><span style="font-weight: bold;">作者：</span><a target="_blank" rel="nofollow noopener noreferrer" href="http://siyang.li/about">Siyang Li</a></p>
+    <p><span style="font-weight: bold;">文章链接：</span><a target="_blank" rel="nofollow noopener noreferrer" href="http://siyang.li/2015/05/31/fan-yi-android-m-api-yu-lan/">http://siyang.li/2015/05/31/fan-yi-android-m-api-yu-lan/</a></p>
+    <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
+  </div>
+  
+  </div>
+</article>
+<div class="nav">
+  
+  <div class="nav-item-prev">
+    <a href="/2015/11/28/robolectric-3-dot-0yu-android-sdk-23-yi-qi-shi-yong-shi-de-ji-ge-keng/" class="nav-link">
+      <i class="iconfont icon-left nav-prev-icon"></i>
+      <div>
+        <div class="nav-label">上一篇</div>
+        
+        <div class="nav-title">Robolectric 3.0与Android SDK 23一起使用时的几个坑 </div>
+        
+      </div>
+    </a>
+  </div>
+  
+  
+  <div class="nav-item-next">
+    <a href="/2015/05/23/2015-google-i-slash-oda-hui-kan-dian-yu-ce/" class="nav-link">
+      <div>
+        <div class="nav-label">下一篇</div>
+        
+        <div class="nav-title">2015 Google I/O大会看点预测 </div>
+        
+      </div>
+      <i class="iconfont icon-right nav-next-icon"></i>
+    </a>
+  </div>
+  
+</div>
+
+<div class="card card-content toc-card" id="mobiletoc">
+  <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#API%E6%A6%82%E8%A7%88"><span class="toc-text">API概览</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E8%A1%8C%E4%B8%BA%E5%8F%98%E6%9B%B4"><span class="toc-text">重要行为变更</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E9%93%BE%E6%8E%A5"><span class="toc-text">应用链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD"><span class="toc-text">应用自动备份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%88%E6%9D%83%E8%AE%A4%E8%AF%81"><span class="toc-text">授权认证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E7%BA%B9%E8%AE%A4%E8%AF%81"><span class="toc-text">指纹认证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AE%E8%AE%A4%E5%87%AD%E6%8D%AE"><span class="toc-text">确认凭据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%88%86%E4%BA%AB"><span class="toc-text">直接分享</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92"><span class="toc-text">语音交互</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A9%E6%89%8B%E5%8A%9F%E8%83%BDAPI"><span class="toc-text">助手功能API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%9F%A5"><span class="toc-text">通知</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%93%9D%E7%89%99%E5%8E%8B%E6%84%9F%E6%94%AF%E6%8C%81"><span class="toc-text">蓝牙压感支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%8D%87%E8%93%9D%E7%89%99%E4%BD%8E%E5%8A%9F%E8%80%97%E6%89%AB%E6%8F%8F"><span class="toc-text">提升蓝牙低功耗扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E7%82%B92-0%E7%AC%AC%E4%B8%80%E7%89%88%E6%94%AF%E6%8C%81"><span class="toc-text">热点2.0第一版支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4K%E6%98%BE%E7%A4%BA%E6%A8%A1%E5%BC%8F"><span class="toc-text">4K显示模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98%E7%9A%84ColorStateLists"><span class="toc-text">可设置主题的ColorStateLists</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E5%8A%9F%E8%83%BD"><span class="toc-text">视频功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E6%9C%BA%E5%8A%9F%E8%83%BD"><span class="toc-text">相机功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AA%E5%85%89%E7%81%AFAPI"><span class="toc-text">闪光灯API</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%8D%E5%A4%84%E7%90%86API"><span class="toc-text">再处理API</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-for-Work%E5%8A%9F%E8%83%BD"><span class="toc-text">Android for Work功能</span></a></li></ol></li></ol>
+</div></main>
+          <aside class="left-column">
+            
+            <div class="card card-author">
+              
+<img src="/images/logo.jpg" class="author-img">
+
+<p class="author-name">Siyang Li</p>
+<p class="author-description">ThoughtWorker, Android developer</p>
+<div class="author-message">
+  <a class="author-posts-count" href="/archives">
+    <span>5</span>
+    <span>文章</span>
+  </a>
+  <a class="author-categories-count" href="/categories">
+    <span>4</span>
+    <span>分类</span>
+  </a>
+  <a class="author-tags-count" href="/tags">
+    <span>14</span>
+    <span>标签</span>
+  </a>
+</div>
+
+            </div>
+            
+            <div class="sticky-tablet">
+  
+  
+  <article class="display-when-two-columns spacer">
+    <div class="card card-content toc-card">
+      <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#API%E6%A6%82%E8%A7%88"><span class="toc-text">API概览</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E8%A1%8C%E4%B8%BA%E5%8F%98%E6%9B%B4"><span class="toc-text">重要行为变更</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E9%93%BE%E6%8E%A5"><span class="toc-text">应用链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD"><span class="toc-text">应用自动备份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%88%E6%9D%83%E8%AE%A4%E8%AF%81"><span class="toc-text">授权认证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E7%BA%B9%E8%AE%A4%E8%AF%81"><span class="toc-text">指纹认证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AE%E8%AE%A4%E5%87%AD%E6%8D%AE"><span class="toc-text">确认凭据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%88%86%E4%BA%AB"><span class="toc-text">直接分享</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92"><span class="toc-text">语音交互</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A9%E6%89%8B%E5%8A%9F%E8%83%BDAPI"><span class="toc-text">助手功能API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%9F%A5"><span class="toc-text">通知</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%93%9D%E7%89%99%E5%8E%8B%E6%84%9F%E6%94%AF%E6%8C%81"><span class="toc-text">蓝牙压感支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%8D%87%E8%93%9D%E7%89%99%E4%BD%8E%E5%8A%9F%E8%80%97%E6%89%AB%E6%8F%8F"><span class="toc-text">提升蓝牙低功耗扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E7%82%B92-0%E7%AC%AC%E4%B8%80%E7%89%88%E6%94%AF%E6%8C%81"><span class="toc-text">热点2.0第一版支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4K%E6%98%BE%E7%A4%BA%E6%A8%A1%E5%BC%8F"><span class="toc-text">4K显示模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98%E7%9A%84ColorStateLists"><span class="toc-text">可设置主题的ColorStateLists</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E5%8A%9F%E8%83%BD"><span class="toc-text">视频功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E6%9C%BA%E5%8A%9F%E8%83%BD"><span class="toc-text">相机功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AA%E5%85%89%E7%81%AFAPI"><span class="toc-text">闪光灯API</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%8D%E5%A4%84%E7%90%86API"><span class="toc-text">再处理API</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-for-Work%E5%8A%9F%E8%83%BD"><span class="toc-text">Android for Work功能</span></a></li></ol></li></ol>
+    </div>
+  </article>
+  
+  
+  <article class="card card-content">
+    <div class="categories-card">
+  <div class="categories-header"><i class="iconfont icon-fenlei" style="padding-right: 2px;"></i>分类</div>
+  <div class="categories-list">
+    
+      <a href="/categories/Blog">
+        <div class="categories-list-item">
+          Blog
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Android">
+        <div class="categories-list-item">
+          Android
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Google">
+        <div class="categories-list-item">
+          Google
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Mobile">
+        <div class="categories-list-item">
+          Mobile
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content">
+    <div class="tags-card">
+  <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>热门标签</div>
+  <div class="tags-list">
+    
+    <a href="\tags\Android" title="Android"><div class="tags-list-item">Android</div></a>
+    
+    <a href="\tags\M-preview" title="M-preview"><div class="tags-list-item">M-preview</div></a>
+    
+    <a href="\tags\ReactNative" title="ReactNative"><div class="tags-list-item">ReactNative</div></a>
+    
+    <a href="\tags\Moto360" title="Moto360"><div class="tags-list-item">Moto360</div></a>
+    
+    <a href="\tags\UnitTest" title="UnitTest"><div class="tags-list-item">UnitTest</div></a>
+    
+    <a href="\tags\Mobile" title="Mobile"><div class="tags-list-item">Mobile</div></a>
+    
+    <a href="\tags\Octopress" title="Octopress"><div class="tags-list-item">Octopress</div></a>
+    
+    <a href="\tags\HTML5" title="HTML5"><div class="tags-list-item">HTML5</div></a>
+    
+    <a href="\tags\iOS" title="iOS"><div class="tags-list-item">iOS</div></a>
+    
+    <a href="\tags\Polymer" title="Polymer"><div class="tags-list-item">Polymer</div></a>
+    
+    <a href="\tags\Nexus" title="Nexus"><div class="tags-list-item">Nexus</div></a>
+    
+    <a href="\tags\GithubPages" title="GithubPages"><div class="tags-list-item">GithubPages</div></a>
+    
+    <a href="\tags\Blog" title="Blog"><div class="tags-list-item">Blog</div></a>
+    
+    <a href="\tags\Robolectric" title="Robolectric"><div class="tags-list-item">Robolectric</div></a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+          </aside>
+          <aside class="right-column">
+            <div class="sticky-widescreen">
+  
+  
+  <article class="card card-content toc-card">
+    <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#API%E6%A6%82%E8%A7%88"><span class="toc-text">API概览</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E8%A1%8C%E4%B8%BA%E5%8F%98%E6%9B%B4"><span class="toc-text">重要行为变更</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E9%93%BE%E6%8E%A5"><span class="toc-text">应用链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD"><span class="toc-text">应用自动备份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%88%E6%9D%83%E8%AE%A4%E8%AF%81"><span class="toc-text">授权认证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E7%BA%B9%E8%AE%A4%E8%AF%81"><span class="toc-text">指纹认证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AE%E8%AE%A4%E5%87%AD%E6%8D%AE"><span class="toc-text">确认凭据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%88%86%E4%BA%AB"><span class="toc-text">直接分享</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92"><span class="toc-text">语音交互</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A9%E6%89%8B%E5%8A%9F%E8%83%BDAPI"><span class="toc-text">助手功能API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%9F%A5"><span class="toc-text">通知</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%93%9D%E7%89%99%E5%8E%8B%E6%84%9F%E6%94%AF%E6%8C%81"><span class="toc-text">蓝牙压感支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%8D%87%E8%93%9D%E7%89%99%E4%BD%8E%E5%8A%9F%E8%80%97%E6%89%AB%E6%8F%8F"><span class="toc-text">提升蓝牙低功耗扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E7%82%B92-0%E7%AC%AC%E4%B8%80%E7%89%88%E6%94%AF%E6%8C%81"><span class="toc-text">热点2.0第一版支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4K%E6%98%BE%E7%A4%BA%E6%A8%A1%E5%BC%8F"><span class="toc-text">4K显示模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98%E7%9A%84ColorStateLists"><span class="toc-text">可设置主题的ColorStateLists</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E5%8A%9F%E8%83%BD"><span class="toc-text">视频功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E6%9C%BA%E5%8A%9F%E8%83%BD"><span class="toc-text">相机功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AA%E5%85%89%E7%81%AFAPI"><span class="toc-text">闪光灯API</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%8D%E5%A4%84%E7%90%86API"><span class="toc-text">再处理API</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-for-Work%E5%8A%9F%E8%83%BD"><span class="toc-text">Android for Work功能</span></a></li></ol></li></ol>
+  </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header"><i class="iconfont icon-wenzhang_huaban" style="padding-right: 2px;"></i>最近文章</div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2016-06-07</div>
+        <a href="/2016/06/06/qian-tan-yi-dong-ying-yong-de-ji-zhu-xuan-xing/"><div class="recent-posts-item-content">浅谈移动应用的技术选型</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2015-11-29</div>
+        <a href="/2015/11/28/robolectric-3-dot-0yu-android-sdk-23-yi-qi-shi-yong-shi-de-ji-ge-keng/"><div class="recent-posts-item-content">Robolectric 3.0与Android SDK 23一起使用时的几个坑</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2015-06-01</div>
+        <a href="/2015/05/31/fan-yi-android-m-api-yu-lan/"><div class="recent-posts-item-content">[翻译]Android M API 概览</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2015-05-24</div>
+        <a href="/2015/05/23/2015-google-i-slash-oda-hui-kan-dian-yu-ce/"><div class="recent-posts-item-content">2015 Google I/O大会看点预测</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>Copyright ©
+          
+          2015 -
+          
+          2021
+        </span>
+        <a href="/" class="footer-link">Siyang Li's blog </a>
+      </div>
+    </div>
+
+    
+    <div class="footer-dsc">
+      
+      
+      Powered by
+      <a href="https://hexo.io/" class="footer-link" target="_blank" rel="nofollow noopener noreferrer">&nbsp;Hexo </a>
+      
+      
+      <span>&nbsp;|&nbsp;</span>
+      
+      
+      
+      Theme -
+      <a href="https://github.com/theme-kaze" class="footer-link" target="_blank"
+        rel="nofollow noopener noreferrer">&nbsp;Kaze</a>
+      
+    </div>
+    
+    
+    
+    
+</footer>
+  <a role="button" id="scrollbutton" class="basebutton" >
+  <i class="iconfont icon-arrowleft button-icon"></i>
+</a>
+<a role="button" id="menubutton" class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a role="button" id="popbutton" class="basebutton">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a role="button" id="darkbutton" class="basebutton darkwidget">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+
+  
+  
+  
+  <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img');
+    var i;
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a');
+      wrapper.setAttribute('data-fslightbox', 'gallery');
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'));
+      wrapper.setAttribute('style', 'width: 100%; display: flex; justify-content: center;');
+      img[i].parentElement.insertBefore(wrapper, img[i]);
+      wrapper.appendChild(img[i]);
+    }
+    refreshFsLightbox();
+  }
+</script>
+<script>loadScript("//cdn.jsdelivr.net/npm/fslightbox@3.1.0/index.min.js", addImgLayout)</script>
+  
+  
+  
+<script src="/js/main.js"></script>
+
+  
+  
+  <script>
+    var addLazyload = function () {
+      var observer = lozad('.lozad', {
+        load: function (el) {
+          el.srcset = el.getAttribute('data-src');
+        },
+        loaded: function (el) {
+          el.classList.add('loaded');
+        }
+      });
+      observer.observe();
+    }
+  </script>
+  <script>loadScript("/js/lib/lozad.min.js", addLazyload)</script>
+  
+  
+</body>
+
+</html>

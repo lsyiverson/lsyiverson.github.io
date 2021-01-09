@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<meta  lang="zh-CN" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#fff" id="theme-color">
+  <link rel="icon" href="/images/logo.jpg">
+  <title>Siyang Li's blog</title>
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+    var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+      }
+    };
+    setDarkmode();
+  </script>
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  </script>
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_vpj3dq9ceqa.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  
+  <link rel="preload" href="//cdn.jsdelivr.net/npm/fslightbox@3.1.0/index.min.js" as="script">
+  
+  
+  <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_vpj3dq9ceqa.css">
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <div class="wrapper">
+    
+    <nav class="navbar">
+  <div class="navbar-logo">
+    <span class="navbar-logo-main">
+      
+      <img class="navbar-logo-img" src="/images/logo.jpg">
+      
+      <span class="navbar-logo-dsc">Siyang Li's blog</span>
+    </span>
+  </div>
+  <div class="navbar-menu">
+    
+    <a href="/" class="navbar-menu-item">首页 </a>
+    
+    <a href="/archives" class="navbar-menu-item">归档 </a>
+    
+    <a href="/tags" class="navbar-menu-item">标签 </a>
+    
+    <a href="/categories" class="navbar-menu-item">分类 </a>
+    
+    <a class="navbar-menu-item darknavbar" id="dark"><i class="iconfont icon-weather"></i></a>
+  </div>
+</nav>
+    
+    <div class="section-wrap">
+      <div class="container">
+        <div class="columns">
+          <main class="main-column">
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      2015 Google I/O大会看点预测
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2015-05-23T22:52:23.000Z" style="display: flex; align-items: center;">
+      <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+      <span>2015-05-24</span>
+    </time>
+    
+    <span class="dot"></span>
+    
+    <a href="/categories/Google/" class="post-meta-link">Google</a>
+    
+    
+    
+    <span class="dot"></span>
+    <span>2.1k 字</span>
+    
+  </div>
+  
+  <div class="post-meta post-show-meta" style="margin-top: -10px;">
+    <div style="display: flex; align-items: center;">
+      <i class="iconfont icon-biaoqian" style="margin-right: 2px; font-size: 1.15rem;"></i>
+      
+      
+        <a href="/tags/Android/" class="post-meta-link">Android</a>
+      
+      
+      <span class="dot"></span>
+      
+        <a href="/tags/Nexus/" class="post-meta-link">Nexus</a>
+      
+      
+      <span class="dot"></span>
+      
+        <a href="/tags/Polymer/" class="post-meta-link">Polymer</a>
+      
+      
+      <span class="dot"></span>
+      
+        <a href="/tags/Moto360/" class="post-meta-link">Moto360</a>
+      
+    </div>
+  </div>
+  
+  </header>
+  <div id="section" class="post-content">
+    <p>2015年的Google I/O大会将在5月28日召开，每年的I/O大会总会发布许多新技术和新产品，在这里列举了一些科技媒体的预测和我自己的一些看法，等到5月28日过后，再来看看这些预测有哪些是准确的。</p>
+<h3 id="看点1-Android-M"><a href="#看点1-Android-M" class="headerlink" title="看点1. Android M"></a>看点1. Android M</h3><p>去年I/O大会上Google公布了Android L版本，考虑到Lollipop版本已经经历了5.0和5.1两个版本号，那么Android M作为下一个发布的版本号是很有可能的。网上媒体很多都认为这有可能是Android 6.0版本，不过我觉得按照Google的节奏应该不会在这个版本上更新版本号，也就是说依然还会是5.x的版本，很有可能就是5.2版本。 而这个版本会带来哪些新功能呢？结合网上泄漏的消息和媒体预测，我认为是以下几个：</p>
+<ol>
+<li>更多对企业用户的支持。目前Android主要还是针对个人用户，在Android M中Google可能会加入更便于企业用户使用的功能，从而尝试在企业用户市场发力。</li>
+<li>原生的指纹识别功能。其实在Nexus 6发布的时候就传言说可能会加入原生的指纹识别功能，Nexus 6背后那个大大的Moto Logo的位置就是为指纹传感器预留的，不过由于指纹传感器的供货问题，最终没能将指纹识别功能加入原生系统。这也就导致了Android在这上面落后了iOS系统，导致Google更难抢占移动支付的市场，所以在Android M中加入原生的指纹识别就成了当务之急。</li>
+<li>原生的多窗口支持。Android上的多窗口实现Samsung很早就做了，但是原生系统一直没有多窗口的支持。随着Google在桌面和企业用户市场上的野心扩大，在Android系统加入原生的多窗口支持也就成了顺理成章的事情。况且有传言说iOS9也会提供多窗口的支持，Google肯定不愿意在这一项上落在老对手的后面的。</li>
+</ol>
+<h3 id="看点2-Moto-360二代"><a href="#看点2-Moto-360二代" class="headerlink" title="看点2. Moto 360二代"></a>看点2. Moto 360二代</h3><p>去年的I/O大会上展示的Moto 360着实吸引了大家的眼球，被大家一致评价为最漂亮的智能手表。之前我曾经犹豫过是否要买一只Moto 360，但是它的存在的几个比较明显的缺点最终还是让我打消了购买的想法（说那么多干啥，归根结底就是穷嘛）。我觉得得的缺点就是一下几个：</p>
+<ol>
+<li>表盘不是Retina屏幕。主要还是手机上已经习惯了Retina的屏幕，突然看到一个可以像素点明显的设备，还真有点瞎了狗眼的感觉。</li>
+<li>表盘不是完整的圆形。下面缺失的一块总让人觉得少了点什么，强迫症患者表示不能接受。</li>
+<li>使用了一颗过时的处理器。Moto你是积压了多少德仪的处理器，到现在都还没用完，德州仪器自己都表示不再生产移动设备的处理器了。虽说手表确实不需要多高的性能支持，但是Moto你搞个45nm工艺的处理器就明显诚意不足了哈，发热和功耗凭这颗处理器就降不下来。</li>
+<li>续航太短。上面说了，就是那颗2010-2011年Ti OMAP 3630处理器，45nm的工艺怎么来改善续航。手表又不像手机，可以做大点多放电池。另外，因为使用的不是OLED屏幕，为了保证续航，就没有办法使屏幕长亮，这也算是缺点之一吧。不过要是使用OLED的话估计又有人会闹烧屏的问题了吧，这个就见仁见智了。不让手表长亮我觉得还OK啦，又不是要随时去看时间的。</li>
+<li>稍微还是厚了点。我手腕太细了，带一个太厚的手表还是不太好看。不过这个就纯属个人感受了。</li>
+</ol>
+<p>总结起来就是：Moto 360二代要是能够解决上面的几个问题，那我就准备买买买了！</p>
+<h3 id="看点3-虚拟现实"><a href="#看点3-虚拟现实" class="headerlink" title="看点3. 虚拟现实"></a>看点3. 虚拟现实</h3><p>去年Google发布了一款Cardboard虚拟现实眼镜（其实就是一个纸盒子带两个镜片），在虚拟现实最近两年一直很火爆的情况下Google可能还会对这个纸盒子升级一下吧。</p>
+<h3 id="看点4-智能家居"><a href="#看点4-智能家居" class="headerlink" title="看点4. 智能家居"></a>看点4. 智能家居</h3><p>Google在花巨资收购了智能温控器制造商Nest公司后一直没有什么动作（在Google Store上卖温控器可不算哈）。在智能家居如此之火，随便哪个硬件厂商都要炒作一下智能家居这个概念的情况下，Google也该有点动作了。说不定今年的I/O大会上就会有深度整合的产品发布。</p>
+<h3 id="看点5-Android-Auto"><a href="#看点5-Android-Auto" class="headerlink" title="看点5. Android Auto"></a>看点5. Android Auto</h3><p>Android Auto和苹果的Apple CarPlay自发布后就没见到有啥动静，都是雷声大雨点小（难道是我处的圈子根本接触不到这些吗？）。估计还是需要和手机搭配使用的繁琐导致不太受欢迎吧。据传Google将在本次I/O大会上发布可以独立运行的Android Auto,这样的话就可以独立运行Google Maps，Google Music等服务而不再需要依赖手机了。</p>
+<h3 id="看点6-Google-Glass"><a href="#看点6-Google-Glass" class="headerlink" title="看点6. Google Glass"></a>看点6. Google Glass</h3><p>价格昂贵（$2000），带上看起来很奇怪的Google Glass自从下架后就从人们的视野中消失很久了，连官网上都只剩下<code>THE JOURNEY DOESN&#39;T END HERE</code>这么一句话了，但是在今年的I/O大会上有可能会再次出现有关它的信息，说不定会有全新的设计，并以更便宜的价格销售哦。</p>
+<h3 id="看点7-Nexus设备"><a href="#看点7-Nexus设备" class="headerlink" title="看点7. Nexus设备"></a>看点7. Nexus设备</h3><p>要我来评价Nexus 6就是三个字：太大了！5.96寸简直是接受不能啊。所以说才一直不想去买这么大的一个手机来放裤兜里。不过坊间传言华为已经在为生产下一代Nexus手机做准备了（不过好像还是很大，5.7寸的）。不过还有传言说LG也在准备另外一款5.2寸屏幕的Nexus手机，也许这次额i/O大会就会有相关的信息（总有钱包在蠢蠢欲动的感觉）。</p>
+<h3 id="看点8-Photos"><a href="#看点8-Photos" class="headerlink" title="看点8. Photos"></a>看点8. Photos</h3><p>用Google Plus的人不多，其实Google Plus还是有一些很赞的功能的，比如说社群。这里要说的是另外一个—-Photos。我最喜欢的就是Photos能够自动同步所有的照片以及自动添加一些标签和特效（特效哦，duang的一下）。据说Google将会把Photos作为一个单独的产品发布，还是很值得期待的。</p>
+<h3 id="看点9-语音控制"><a href="#看点9-语音控制" class="headerlink" title="看点9. 语音控制"></a>看点9. 语音控制</h3><p>手机屏幕越来越大，手指感觉已经力不从心了。另外，一些常用频繁的操作还总需要打断正在做的事情去切换处理总让人感觉智能手机还不够智能。Google打算加入Voice Access来强化Android系统的语音控制功能，来引入一种新的智能设备操作方式。感觉还是很值得期待的（我知道在公共场所和一个手机对话是一件很stupid的事情，不过要是你边做饭还可以边发微信，而且还不用中断你手上的活的话还是很值得期待的哦）。</p>
+<h3 id="看点10-Polymer"><a href="#看点10-Polymer" class="headerlink" title="看点10. Polymer"></a>看点10. Polymer</h3><p>去年的I/O大会上就介绍了Ploymer，截止到今天Polymer已经进入到0.9Beta版，今年的I/O大会很有可能就会发布正式版。Google声称Polymer是用于变革网页浏览体验的武器，要让网页像App一样使用。不过到目前为止，并没有很多的开发者响应，只有期望Polymer正式发布后，能够打动开发者的心了。</p>
+<hr>
+<p>以上就是在2015年Google I/O大会前对于此次大会相关看点的预测和我自己的一些看法。在I/O大会正式召开过后，再来回顾看看有多少预测是准确的，又有哪些意料之外的事情。</p>
+
+  </div>
+  <div>
+  
+  <div class="post-note note-warning copyright" style="margin-top: 42px">
+    <p><span style="font-weight: bold;">作者：</span><a target="_blank" rel="nofollow noopener noreferrer" href="http://siyang.li/about">Siyang Li</a></p>
+    <p><span style="font-weight: bold;">文章链接：</span><a target="_blank" rel="nofollow noopener noreferrer" href="http://siyang.li/2015/05/23/2015-google-i-slash-oda-hui-kan-dian-yu-ce/">http://siyang.li/2015/05/23/2015-google-i-slash-oda-hui-kan-dian-yu-ce/</a></p>
+    <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
+  </div>
+  
+  </div>
+</article>
+<div class="nav">
+  
+  <div class="nav-item-prev">
+    <a href="/2015/05/31/fan-yi-android-m-api-yu-lan/" class="nav-link">
+      <i class="iconfont icon-left nav-prev-icon"></i>
+      <div>
+        <div class="nav-label">上一篇</div>
+        
+        <div class="nav-title">[翻译]Android M API 概览 </div>
+        
+      </div>
+    </a>
+  </div>
+  
+  
+  <div class="nav-item-next">
+    <a href="/2015/05/22/kan-ke-zhi-lu-,zhong-di-qun-xing-bo-ke-shang-de-di-yi-pian-wen-zhang/" class="nav-link">
+      <div>
+        <div class="nav-label">下一篇</div>
+        
+        <div class="nav-title">坎坷之路，终抵群星——博客上的第一篇文章 </div>
+        
+      </div>
+      <i class="iconfont icon-right nav-next-icon"></i>
+    </a>
+  </div>
+  
+</div>
+
+<div class="card card-content toc-card" id="mobiletoc">
+  <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B91-Android-M"><span class="toc-text">看点1. Android M</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B92-Moto-360%E4%BA%8C%E4%BB%A3"><span class="toc-text">看点2. Moto 360二代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B93-%E8%99%9A%E6%8B%9F%E7%8E%B0%E5%AE%9E"><span class="toc-text">看点3. 虚拟现实</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B94-%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85"><span class="toc-text">看点4. 智能家居</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B95-Android-Auto"><span class="toc-text">看点5. Android Auto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B96-Google-Glass"><span class="toc-text">看点6. Google Glass</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B97-Nexus%E8%AE%BE%E5%A4%87"><span class="toc-text">看点7. Nexus设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B98-Photos"><span class="toc-text">看点8. Photos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B99-%E8%AF%AD%E9%9F%B3%E6%8E%A7%E5%88%B6"><span class="toc-text">看点9. 语音控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B910-Polymer"><span class="toc-text">看点10. Polymer</span></a></li></ol>
+</div></main>
+          <aside class="left-column">
+            
+            <div class="card card-author">
+              
+<img src="/images/logo.jpg" class="author-img">
+
+<p class="author-name">Siyang Li</p>
+<p class="author-description">ThoughtWorker, Android developer</p>
+<div class="author-message">
+  <a class="author-posts-count" href="/archives">
+    <span>5</span>
+    <span>文章</span>
+  </a>
+  <a class="author-categories-count" href="/categories">
+    <span>4</span>
+    <span>分类</span>
+  </a>
+  <a class="author-tags-count" href="/tags">
+    <span>14</span>
+    <span>标签</span>
+  </a>
+</div>
+
+            </div>
+            
+            <div class="sticky-tablet">
+  
+  
+  <article class="display-when-two-columns spacer">
+    <div class="card card-content toc-card">
+      <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B91-Android-M"><span class="toc-text">看点1. Android M</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B92-Moto-360%E4%BA%8C%E4%BB%A3"><span class="toc-text">看点2. Moto 360二代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B93-%E8%99%9A%E6%8B%9F%E7%8E%B0%E5%AE%9E"><span class="toc-text">看点3. 虚拟现实</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B94-%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85"><span class="toc-text">看点4. 智能家居</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B95-Android-Auto"><span class="toc-text">看点5. Android Auto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B96-Google-Glass"><span class="toc-text">看点6. Google Glass</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B97-Nexus%E8%AE%BE%E5%A4%87"><span class="toc-text">看点7. Nexus设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B98-Photos"><span class="toc-text">看点8. Photos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B99-%E8%AF%AD%E9%9F%B3%E6%8E%A7%E5%88%B6"><span class="toc-text">看点9. 语音控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B910-Polymer"><span class="toc-text">看点10. Polymer</span></a></li></ol>
+    </div>
+  </article>
+  
+  
+  <article class="card card-content">
+    <div class="categories-card">
+  <div class="categories-header"><i class="iconfont icon-fenlei" style="padding-right: 2px;"></i>分类</div>
+  <div class="categories-list">
+    
+      <a href="/categories/Blog">
+        <div class="categories-list-item">
+          Blog
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Android">
+        <div class="categories-list-item">
+          Android
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Google">
+        <div class="categories-list-item">
+          Google
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Mobile">
+        <div class="categories-list-item">
+          Mobile
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content">
+    <div class="tags-card">
+  <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>热门标签</div>
+  <div class="tags-list">
+    
+    <a href="\tags\Android" title="Android"><div class="tags-list-item">Android</div></a>
+    
+    <a href="\tags\M-preview" title="M-preview"><div class="tags-list-item">M-preview</div></a>
+    
+    <a href="\tags\ReactNative" title="ReactNative"><div class="tags-list-item">ReactNative</div></a>
+    
+    <a href="\tags\Moto360" title="Moto360"><div class="tags-list-item">Moto360</div></a>
+    
+    <a href="\tags\UnitTest" title="UnitTest"><div class="tags-list-item">UnitTest</div></a>
+    
+    <a href="\tags\Mobile" title="Mobile"><div class="tags-list-item">Mobile</div></a>
+    
+    <a href="\tags\Octopress" title="Octopress"><div class="tags-list-item">Octopress</div></a>
+    
+    <a href="\tags\HTML5" title="HTML5"><div class="tags-list-item">HTML5</div></a>
+    
+    <a href="\tags\iOS" title="iOS"><div class="tags-list-item">iOS</div></a>
+    
+    <a href="\tags\Polymer" title="Polymer"><div class="tags-list-item">Polymer</div></a>
+    
+    <a href="\tags\Nexus" title="Nexus"><div class="tags-list-item">Nexus</div></a>
+    
+    <a href="\tags\GithubPages" title="GithubPages"><div class="tags-list-item">GithubPages</div></a>
+    
+    <a href="\tags\Blog" title="Blog"><div class="tags-list-item">Blog</div></a>
+    
+    <a href="\tags\Robolectric" title="Robolectric"><div class="tags-list-item">Robolectric</div></a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+          </aside>
+          <aside class="right-column">
+            <div class="sticky-widescreen">
+  
+  
+  <article class="card card-content toc-card">
+    <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B91-Android-M"><span class="toc-text">看点1. Android M</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B92-Moto-360%E4%BA%8C%E4%BB%A3"><span class="toc-text">看点2. Moto 360二代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B93-%E8%99%9A%E6%8B%9F%E7%8E%B0%E5%AE%9E"><span class="toc-text">看点3. 虚拟现实</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B94-%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85"><span class="toc-text">看点4. 智能家居</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B95-Android-Auto"><span class="toc-text">看点5. Android Auto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B96-Google-Glass"><span class="toc-text">看点6. Google Glass</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B97-Nexus%E8%AE%BE%E5%A4%87"><span class="toc-text">看点7. Nexus设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B98-Photos"><span class="toc-text">看点8. Photos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B99-%E8%AF%AD%E9%9F%B3%E6%8E%A7%E5%88%B6"><span class="toc-text">看点9. 语音控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%82%B910-Polymer"><span class="toc-text">看点10. Polymer</span></a></li></ol>
+  </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header"><i class="iconfont icon-wenzhang_huaban" style="padding-right: 2px;"></i>最近文章</div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2016-06-07</div>
+        <a href="/2016/06/06/qian-tan-yi-dong-ying-yong-de-ji-zhu-xuan-xing/"><div class="recent-posts-item-content">浅谈移动应用的技术选型</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2015-11-29</div>
+        <a href="/2015/11/28/robolectric-3-dot-0yu-android-sdk-23-yi-qi-shi-yong-shi-de-ji-ge-keng/"><div class="recent-posts-item-content">Robolectric 3.0与Android SDK 23一起使用时的几个坑</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2015-06-01</div>
+        <a href="/2015/05/31/fan-yi-android-m-api-yu-lan/"><div class="recent-posts-item-content">[翻译]Android M API 概览</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2015-05-24</div>
+        <a href="/2015/05/23/2015-google-i-slash-oda-hui-kan-dian-yu-ce/"><div class="recent-posts-item-content">2015 Google I/O大会看点预测</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>Copyright ©
+          
+          2015 -
+          
+          2021
+        </span>
+        <a href="/" class="footer-link">Siyang Li's blog </a>
+      </div>
+    </div>
+
+    
+    <div class="footer-dsc">
+      
+      
+      Powered by
+      <a href="https://hexo.io/" class="footer-link" target="_blank" rel="nofollow noopener noreferrer">&nbsp;Hexo </a>
+      
+      
+      <span>&nbsp;|&nbsp;</span>
+      
+      
+      
+      Theme -
+      <a href="https://github.com/theme-kaze" class="footer-link" target="_blank"
+        rel="nofollow noopener noreferrer">&nbsp;Kaze</a>
+      
+    </div>
+    
+    
+    
+    
+</footer>
+  <a role="button" id="scrollbutton" class="basebutton" >
+  <i class="iconfont icon-arrowleft button-icon"></i>
+</a>
+<a role="button" id="menubutton" class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a role="button" id="popbutton" class="basebutton">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a role="button" id="darkbutton" class="basebutton darkwidget">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+
+  
+  
+  
+  <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img');
+    var i;
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a');
+      wrapper.setAttribute('data-fslightbox', 'gallery');
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'));
+      wrapper.setAttribute('style', 'width: 100%; display: flex; justify-content: center;');
+      img[i].parentElement.insertBefore(wrapper, img[i]);
+      wrapper.appendChild(img[i]);
+    }
+    refreshFsLightbox();
+  }
+</script>
+<script>loadScript("//cdn.jsdelivr.net/npm/fslightbox@3.1.0/index.min.js", addImgLayout)</script>
+  
+  
+  
+<script src="/js/main.js"></script>
+
+  
+  
+  <script>
+    var addLazyload = function () {
+      var observer = lozad('.lozad', {
+        load: function (el) {
+          el.srcset = el.getAttribute('data-src');
+        },
+        loaded: function (el) {
+          el.classList.add('loaded');
+        }
+      });
+      observer.observe();
+    }
+  </script>
+  <script>loadScript("/js/lib/lozad.min.js", addLazyload)</script>
+  
+  
+</body>
+
+</html>
