@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Siyang Li&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Siyang Li&#39;s blog">
+<meta property="og:url" content="http://siyang.li/index.html">
+<meta property="og:site_name" content="Siyang Li&#39;s blog">
+<meta property="og:locale">
+<meta property="article:author" content="Siyang Li">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Siyang Li's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Siyang Li&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A ROUGH ROAD LEADS TO THE STARS</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://siyang.li"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2016-06-07-qian-tan-yi-dong-ying-yong-de-ji-zhu-xuan-xing" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/06/07/2016-06-07-qian-tan-yi-dong-ying-yong-de-ji-zhu-xuan-xing/" class="article-date">
+  <time class="dt-published" datetime="2016-06-07T07:21:07.000Z" itemprop="datePublished">2016-06-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Mobile-App/">Mobile App</a>►<a class="article-category-link" href="/categories/Mobile-App/Android/">Android</a>►<a class="article-category-link" href="/categories/Mobile-App/Android/iOS/">iOS</a>►<a class="article-category-link" href="/categories/Mobile-App/Android/iOS/HTML5/">HTML5</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/06/07/2016-06-07-qian-tan-yi-dong-ying-yong-de-ji-zhu-xuan-xing/">浅谈移动应用的技术选型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在这个巨变的时代，技术选型是个很难做决定的事情。而移动应用的技术在几个巨头（Google，Facebook，Apple etc.）的带动下更是日新月异。所以说要选择一个适合业务需求并且匹配开发人员能力的技术方案并不是一件简单的事情。我也只是在移动开发上做过一点微小的工作，此处仅能抛个砖，希望各位有玉的大神尽管砸过来。</p>
+<p>做移动应用开发，说起来技术方案不外乎HTML5（没错，做Mobile Web其实也算是一种移动应用）、Native（Android上不管是用Java，Kotlin还是Scala，iOS上不管是用Objective-C还是Swift）和使用原生UI，用JavaScript来实现逻辑的诸如React Native一类的方案。除此之外，还有结合HTML5和Native的Hybird混合方案。不同的技术方案有着不同的适应场景，至于具体如何选择，接下来我简单地谈谈我自己的理解。</p>
+<h3 id="1-HTML5"><a href="#1-HTML5" class="headerlink" title="1. HTML5"></a>1. HTML5</h3><p>也就是Web App的方案，这种方案最大的优点在于“Write Once, Run Everywhere”，不管你是Android还是iOS，都可以用一套代码搞定，在国内的话还能对接微信公众号，给用户提供一个方便快捷的入口，并且还有版本升级容易的优势（毕竟服务器是受自己控制的）。但是这种方案的缺点也很明显，无法使用系统级API，只能做为一个临时的入口，用户很难留存，并且因为浏览器性能的原因，很难带来很好地用户体验。</p>
+<p>所以说Web App的主要适用场景还是在于作为对非核心业务在移动端的入口补足，或者是作为用户轻量，低频使用的体验增强。</p>
+<h3 id="2-Hybird"><a href="#2-Hybird" class="headerlink" title="2. Hybird"></a>2. Hybird</h3><p>Hybird是一种兼顾Native与HTML的开发模式，但其实根据实现的不同，还可以再细分为两种实现方案：</p>
+<blockquote>
+<ol>
+<li>在Native App中使用WebView加载远端Web资源</li>
+<li>使用Cordova/PhoneGap等框架通过WebView加载本地资源进行页面渲染</li>
+</ol>
+</blockquote>
+<p>第一种方案其实应用得非常普遍了，很多应用的展示页面都是通过这种方式实现的。因为展示页面需要的正是能够很容易的更换展示的内容以及布局的格式，并且这种纯展示的页面也并不需要复杂的动画与特效，使用Web页面是一个非常合适的解决方案。而第二种方案前一段时间其实非常的火，因为它在跨平台，高效开发以及快速发布上有着明显的优势，毕竟Web内容只需要开发一次就可以在各个平台使用。并且将资源打包在本地也可以在一定程度上缓解从远端加载静态资源导致UI展示延迟的问题，并且还可以通过桥接Native和Web来调用一些Device的API。但其劣势也很明显，一是通过WebView执行代码效率较低，很难实现一些炫酷的效果，并且还存在不同设备的兼容性问题；二是如果想调用相关平台的API需要针对平台单独进行开发，如果应用中用到了大量的Device API，那么开发的效率将大大降低；三是很难应用到平台相关的新特性，比较难做出有特色的产品。</p>
+<p>使用HTML页面来实现纯展示的页面是非常推荐的一种方案。而Cordova/PhoneGap则更适用于对Mobile预算有限的公司或创业团队，或者对App进行快速的上线验证。</p>
+<h3 id="3-React-Native"><a href="#3-React-Native" class="headerlink" title="3. React Native"></a>3. React Native</h3><p>把React Native单独拿出来，是因为确实不能简单的将它分到其它任意一种方案里面去。React Native确实是最近最火的跨平台App解决方案了。它脱胎于React，因为React基于Virtual DOM来进行界面渲染，所以用Native的View来替换掉原本React的HTML DOM就顺理成章的引出了React Native的概念。它与之前的跨平台方案有一个本质的区别在于：其它方案都在追求写一次code解决所有平台的问题，而React Native的理念在于“Learn Once, Write Anywhere”。虽然大部分代码是平台无关的，但是平台相关的代码都需要单独实现，这虽然对跨平台带来了不便，但是引入的好处也是显而易见的，View层的部分通过原生组件实现，性能比其他WebView的方案不知道高到哪去了。而且React Native整套的逻辑代码都通过JavaScript实现，这样就让跨平台应用能够方便的复用逻辑代码。另外虽然React Native没有支持使用CSS来实现样式，但是提供了类似CSS的样式表支持，有过UI开发经验的人都能够非常快的上手。并且由于前端React也是非常的火，很多React社区的很多产出也可以在React Native上借鉴使用。</p>
+<p>React Native对于没有复杂动画效果的一般应用来说不失为一个很好的解决方案。而且对于一些小型的企业级应用也是非常适用的。但是，React Native对于Android平台的支持度是不如iOS平台的，而且现有的非常成熟的应用也较少，所以说如果要在一些面向用户量很大，讲求用户体验的App还是要慎重考虑的。</p>
+<h3 id="4-原生应用"><a href="#4-原生应用" class="headerlink" title="4. 原生应用"></a>4. 原生应用</h3><p>原生应用的开发真的是让人又爱又恨。爱在于你可以在它上面施展拳脚，使用新特性，实现炫酷的效果。而恨则在于它跨平台性几乎为零，除了资源外几乎没有可重用的东西，即使是相似架构上的逻辑你也得再实现一遍。使用原生开发，能够方便地添加动画效果，调用底层硬件，所有的限制仅仅是来自平台的限制。但是正常情况下需要对不同的平台搭配不同的开发人员，而且如果要追求良好的用户体验，整个应用的设计还得满足相应平台的设计规范，这不仅是对Dev的考验，也是对UX的考验。不过如果真的对App的质量有很高的要求，我觉得这一切的付出也还是都是值得的。</p>
+<p>如果是对要求硬件性能，讲究动画效果，追求用户体验的应用，还是建议分平台单独设计，并且都使用原生的技术方案来实现。其实这也是目前市面上大部分企业做出的选择。</p>
+<hr>
+<p>其实，在真正启动项目之前进行技术选型时，除了考虑更符合业务的架构外，还要考虑开发人员的能力及技术栈。毕竟最后App还是由Dev们开发的。如果仅仅考虑业务而不考虑开发人员的技术能力来选择技术方案，不仅有一种钦定的感觉，而且最后往往坑到的还是自己。</p>
+<p>我们常说：<code>工具是死的，人是活的</code>，考虑多种因素，在技术选型上做出更充分的考量，才是真正正确的选择。所以说又回到那句老话上：“It depends…”</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siyang.li/2016/06/07/2016-06-07-qian-tan-yi-dong-ying-yong-de-ji-zhu-xuan-xing/" data-id="ckjpm8q4r000q07hoggyccw04" data-title="浅谈移动应用的技术选型" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2015-11-30-robolectric-3-dot-0yu-android-sdk-23-yi-qi-shi-yong-shi-de-ji-ge-keng" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/11/29/2015-11-30-robolectric-3-dot-0yu-android-sdk-23-yi-qi-shi-yong-shi-de-ji-ge-keng/" class="article-date">
+  <time class="dt-published" datetime="2015-11-29T16:08:02.000Z" itemprop="datePublished">2015-11-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Robolectric/">Robolectric</a>►<a class="article-category-link" href="/categories/Robolectric/Android/">Android</a>►<a class="article-category-link" href="/categories/Robolectric/Android/Unit-Test/">Unit Test</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/11/29/2015-11-30-robolectric-3-dot-0yu-android-sdk-23-yi-qi-shi-yong-shi-de-ji-ge-keng/">Robolectric 3.0与Android SDK 23一起使用时的几个坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>这两天在写一个简单地Android应用，准备顺手练练TDD。为了能够达到快速开发的需求，就选择了Robolectric这个测试框架来进行单元测试。之前已经在正式项目中用过Robolectric，本以为应该没有什么可能遇到的坑，结果却截然相反。</p>
+<p>项目代码可以到<a target="_blank" rel="noopener" href="https://github.com/lsyiverson/terminator">这里</a>查看。因为是自己写着练手的应用，就准备把所有新的东西都用上，只管最新，不管有没有坑。刚开始搭的时候在<code>Travis CI</code>, <code>retrolambda</code>, <code>databinding</code>这些上面都没有遇到啥问题，我之前担心的retrolambda和Travis CI兼容的问题也并没有出现。直到用上了Robolectric，就发现下面几个东西与Robolectric 3.0一起用的话确实有些坑:</p>
+<ul>
+<li>Android SDK 23</li>
+<li>Android Design Support 23.1.1</li>
+<li>最新集成在Android Gradle Tools 1.5.0里面的databinding</li>
+</ul>
+<p>下面具体讲讲都遇到了啥问题。</p>
+<h3 id="1-Robolectric-3-0目前并不支持Android-SDK-22以上的版本"><a href="#1-Robolectric-3-0目前并不支持Android-SDK-22以上的版本" class="headerlink" title="1. Robolectric 3.0目前并不支持Android SDK 22以上的版本"></a>1. Robolectric 3.0目前并不支持Android SDK 22以上的版本</h3><p>因为sdk中用于开发的android.jar是精简过的，只能保证编译时不出错，而在用于单元测试运行时都会抛出<code>java.lang.RuntimeException(“Stub!”)</code>异常。Robolectric就是为了解决这个问题而生，它完全模拟了Android SDK的jar文件，也正是这样，也就导致了每次Android版本升级后要等到Google放出源代码后，维护者才能去更新jar文件以支持所有新版Android系统的所有接口。Android Marshmallow的源代码刚刚放出没有多久，这也就导致Robolectric现在的版本没办法支持使用SDK 23开发的软件。不过好消息是，作者已经push了一个support-api-23的分支，应该不用多久就可以解决对api 23的支持。</p>
+<h3 id="2-Robolectric-3-0目前并没有对Design-Support中widget的Shadow"><a href="#2-Robolectric-3-0目前并没有对Design-Support中widget的Shadow" class="headerlink" title="2. Robolectric 3.0目前并没有对Design Support中widget的Shadow"></a>2. Robolectric 3.0目前并没有对Design Support中widget的Shadow</h3><p>我在项目中使用了一些Android Design Support中提供的Widget，比如说FloatingActionButton。但是Robolectric目前并没有对这些widget实现shadow，在运行测试的时候就会因为不能实际调用到真实的方法而产生错误。虽说shadow是可以自己去实现的，不过还是略显麻烦了，希望官方能够提供更多的widget的shadow来供使用。</p>
+<h3 id="3-Robolectric-3-0不能支持Gradle-Tools-1-5中的Databinding使用方式"><a href="#3-Robolectric-3-0不能支持Gradle-Tools-1-5中的Databinding使用方式" class="headerlink" title="3. Robolectric 3.0不能支持Gradle Tools 1.5中的Databinding使用方式"></a>3. Robolectric 3.0不能支持Gradle Tools 1.5中的Databinding使用方式</h3><p>在之前的Gradle Tools版本中，databinding是以Gradle插件的形式提供的，Robolectric是能够支持databinding的使用的。不过Tools升级到1.5版本后，新的databinding是直接集成到一起的。目前的Robolectric还不能支持这样的使用方式。会直接提示找不到<code>android.view.layout</code>,这导致布局根本无法加载。这样的问题还是就只有等官方什么时候能够提供支持进行升级吧。</p>
+<p>因为自己的项目在开发过程中遇到了这样的问题，便记录下来。不过这样给我提了一个醒，在真正的项目中用到的框架一定要先调查清楚是否兼容，升级SDK时也要考虑清楚是否与现有的第三方框架兼容，否则的话在项目中途遇到一些坑的话，代价就有点大了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siyang.li/2015/11/29/2015-11-30-robolectric-3-dot-0yu-android-sdk-23-yi-qi-shi-yong-shi-de-ji-ge-keng/" data-id="ckjpm8q4q000p07ho7w2vhtux" data-title="Robolectric 3.0与Android SDK 23一起使用时的几个坑" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2015-06-01-fan-yi-android-m-api-yu-lan" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/06/01/2015-06-01-fan-yi-android-m-api-yu-lan/" class="article-date">
+  <time class="dt-published" datetime="2015-06-01T13:59:06.000Z" itemprop="datePublished">2015-06-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/android/">android</a>►<a class="article-category-link" href="/categories/android/M-preview/">M preview</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/06/01/2015-06-01-fan-yi-android-m-api-yu-lan/">[翻译]Android M API 概览</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>本文翻译自Android开发者网站<a target="_blank" rel="noopener" href="http://developer.android.com/preview/api-overview.html">http://developer.android.com/preview/api-overview.html</a></p>
+<h2 id="API概览"><a href="#API概览" class="headerlink" title="API概览"></a>API概览</h2><p>Android M开发者预览版让你能够抢先了解即将发行的Android平台。新版本为用户和应用开发者提供了新的功能。这篇文档介绍了最主要的几个API。</p>
+<p>M开发者预览版主要针对<strong>早期适配开发者</strong>和<strong>测试人员</strong>。如果你想直接影响Android框架开发，<a target="_blank" rel="noopener" href="http://developer.android.com/preview/setup-sdk.html">试一试Android M开发者预览版</a>，然后把你的反馈发送给我们！</p>
+<blockquote>
+<p><strong>警告：</strong>不要把使用M开发者预览版的应用发布到Play商城</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>注意：</strong>这篇文档有可能会引用到没有在<a target="_blank" rel="noopener" href="http://developer.android.com/">developer.android.com</a>的相关材料中涉及的类和方法。这些API元素会在文档中以<code>代码样式</code>标出。想要查看这些元素的早期文档，请下载<a target="_blank" rel="noopener" href="http://developer.android.com/preview/download.html#docs">预览版参考文档</a></p>
+</blockquote>
+<h4 id="重要行为变更"><a href="#重要行为变更" class="headerlink" title="重要行为变更"></a>重要行为变更</h4><p>如果你以前曾经发布过Android app，请注意你的app可能会受平台相关的变化影响。<br>请查看<a target="_blank" rel="noopener" href="http://developer.android.com/preview/behavior-changes.html">行为变更</a>获取完整信息。</p>
+<h3 id="应用链接"><a href="#应用链接" class="headerlink" title="应用链接"></a>应用链接</h3><hr>
+<p>预览版通过应用链接增强了Android的Intent系统。这个功能允许将一个应用和你拥有的网络域名关联起来。基于这一关联，系统会选择默认打开一个特殊链接的应用，从而跳过弹出提示让用户选择的步骤。想了解如何实现这一功能，请查看<a target="_blank" rel="noopener" href="http://developer.android.com/preview/features/app-linking.html">应用链接</a>。</p>
+<h3 id="应用自动备份"><a href="#应用自动备份" class="headerlink" title="应用自动备份"></a>应用自动备份</h3><hr>
+<p>系统现在提供自动地所有数据备份和恢复功能。这种行为在针对M开发的应用上默认为开启的；你并不需要添加额外的代码。如果用户删除了Google账号，那么他们的备份数据也同时被删除了。了解这一功能是如何工作的和如何配置文件系统上哪些是需要备份的，请查看<a target="_blank" rel="noopener" href="http://developer.android.com/preview/backup/index.html">应用自动备份</a>。</p>
+<h3 id="授权认证"><a href="#授权认证" class="headerlink" title="授权认证"></a>授权认证</h3><hr>
+<p>预览版提供了新的API允许你在支持的设备上通过指纹来对用户进行授权认证，并且会检查用户最近一次使用的是哪种设备解锁机制（比如说锁屏密码）。查看<a target="_blank" rel="noopener" href="http://developer.android.com/training/articles/keystore.html">Android密钥系统</a>来集成使用这些API。</p>
+<h4 id="指纹认证"><a href="#指纹认证" class="headerlink" title="指纹认证"></a>指纹认证</h4><p>通过扫描指纹的方式来认证用户，需要得到新增加的<code>android.hardware.fingerprint.FingerprintManager</code>类的实例，然后调用<code>FingerprintManager.authenticate()</code>方法。你的应用必须运行在拥有指纹传感器的兼容的设备上。在你的应用上你必须实现指纹认证流程的用户界面，并且必须使用标准的Android指纹图标。Android指纹图标（<code>c_fp_40px.png</code>）包含在<a target="_blank" rel="noopener" href="https://github.com/googlesamples/android-FingerprintDialog">示例应用</a>中。如果你同时开发多个使用指纹认证的应用，请注意每个应用都必须单独认证用户指纹。<br>要在你的应用中使用这些功能，首先要在manifest中添加<code>USE_FINGERPRINT</code>权限。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission</span><br><span class="line">        android:name&#x3D;&quot;android.permission.USE_FINGERPRINT&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<div style="display: inline-block">
+<div style="float:left; width:60%">
+想要查看指纹认证的一个应用实现，请参考<a target="_blank" rel="noopener" href="https://github.com/googlesamples/android-FingerprintDialog">指纹对话框示例</a>。
+
+<p>如果你要测试这些功能，下面就是需要的步骤：</p>
+<ol>
+<li>如果你还没有安装Android SDK Tools 24.3版本，请先安装。</li>
+<li>在<strong>设置>安全>指纹</strong>中登记一个新的指纹，根据登记的指引执行即可。</li>
+<li>使用下面的命令来在一个模拟器上模拟指纹触摸事件。在解锁屏幕和你的应用中也是使用同样的命令来模拟指纹触摸事件。</li>
+</ol>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb -e emu finger touch &lt;finger_id&gt;</span><br></pre></td></tr></table></figure>
+<p>在Windows上，你也许需要运行<code>telnet 127.0.0.1 <emulator-id></code>并在后面跟上<code>finger touch <finger_id></code>。</p>
+</div>    
+<div style="float:right; width:40%; text-align:right">
+<img src="/images/fingerprint-screen.png"/>
+</div>
+</div>
+
+
+<h4 id="确认凭据"><a href="#确认凭据" class="headerlink" title="确认凭据"></a>确认凭据</h4><p>你的应用可以基于用户最近一次是如何解锁设备的来认证用户。这种功能将用户从不得不记住很多单独额外的应用密码中解放出来，并且可以避免你实现你自己的认证用户界面。而这种认证用户的功能需要同使用公钥或私钥认证的实现结合起来。</p>
+<p>当创建**<a target="_blank" rel="noopener" href="http://developer.android.com/reference/javax/crypto/KeyGenerator.html">KeyGenerator</a><strong>或</strong><a target="_blank" rel="noopener" href="http://developer.android.com/reference/java/security/KeyPairGenerator.html">KeyPairGenerator</a>**时调用新的<code>android.security.keystore.KeyGenParameterSpec.setUserAuthenticationValidityDurationSeconds</code>方法来在用户成功认证后设置一个重用这个相同密钥的超时时长。这个功能目前是使用的是对称加密操作。</p>
+<p>为了避免频繁的显示重新认证对话框——你的应用应该在第一次和超时后使用加密对象，在你的应用中通过[createConfirmDeviceCredentialIntent()](“<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/app/KeyguardManager.html#createConfirmDeviceCredentialIntent">http://developer.android.com/reference/android/app/KeyguardManager.html#createConfirmDeviceCredentialIntent</a>(java.lang.CharSequence, java.lang.CharSequence)”)来重新认证用户。</p>
+<p>想要查看这个功能的实现，请参考<a target="_blank" rel="noopener" href="https://github.com/googlesamples/android-ConfirmCredential">确认凭据示例</a>。</p>
+<h3 id="直接分享"><a href="#直接分享" class="headerlink" title="直接分享"></a>直接分享</h3><hr>
+<div style="display: inline-block">
+<div style="float:left; width:60%">
+<p>预览版提供了可以快速直接分享到用户的API。你可以定义<em>直接分享目标</em>来运行你应用中的指定Activity.直接分享目标通过<em>分享</em>菜单来呈现给用户。这一功能允许用户在其他应用中分享内容到指定目标，比如联系人。例如，直接分享目标可以启动一个其他社交应用中的Activity，通过这个应用可以让用户直接分享内容到指定用户和社团。</p>
+<p>使用直接分享目标功能你需要定义一个继承自<code>android.service. 
+chooser.ChooserTargetService</code>的类。在manifest中声明你的<code>ChooserTargetService</code>。在声明里面，还需要标明<code>BIND_CHOOSER_TARGET_SERVICE</code>权限和包含<code>SERVICE_INTERFACE</code>action的Intent Filter。</p>
+</div>
+<div style="float:right; width:40%; text-align:right">
+<img src="/images/direct-share-screen.png"/>
+</div>
+</div>
+下面的例子展示了你应该如何在你的manifest中声明`ChooserTargetService`。
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;service android:name&#x3D;&quot;.ChooserTargetService&quot;</span><br><span class="line">        android:label&#x3D;&quot;@string&#x2F;service_name&quot;</span><br><span class="line">        android:permission&#x3D;&quot;android.permission.BIND_CHOOSER_TARGET_SERVICE&quot;&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;action android:name&#x3D;&quot;android.service.chooser.ChooserTargetService&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;intent-filter&gt;</span><br><span class="line">&lt;&#x2F;service&gt;</span><br></pre></td></tr></table></figure>
+<p>在manifest中每一个你想要暴露给<code>ChooserTargetService</code>的Activity加上带有<code>android.service.chooser.chooser_target_service</code>名称的<code>&lt;meta-data&gt;</code>元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name&#x3D;&quot;.MyShareActivity”</span><br><span class="line">        android:label&#x3D;&quot;@string&#x2F;share_activity_label&quot;&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;action android:name&#x3D;&quot;android.intent.action.SEND&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;intent-filter&gt;</span><br><span class="line">&lt;meta-data</span><br><span class="line">        android:name&#x3D;&quot;android.service.chooser.chooser_target_service&quot;</span><br><span class="line">        android:value&#x3D;&quot;.ChooserTargetService&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;activity&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="语音交互"><a href="#语音交互" class="headerlink" title="语音交互"></a>语音交互</h3><hr>
+<p>预览版提供了新的语音交互API，同<a target="_blank" rel="noopener" href="https://developers.google.com/voice-actions/">语音指令</a>一起，允许你在应用中构建会话式的语音体验。调用<code>android.app.Activity.isVoiceInteraction()</code>方法来确定你的Activity是否是被语音指令启动的。如果是的话，你的应用可以使用<code>ndroid.app.VoiceInteractor</code>类来向用户请求语音确认，从列表中选择选项以及其他。想了解更多语音指令的实现，请查看<a target="_blank" rel="noopener" href="https://developers.google.com/voice-actions/interaction/">语音指令开发者网站</a></p>
+<h3 id="助手功能API"><a href="#助手功能API" class="headerlink" title="助手功能API"></a>助手功能API</h3><hr>
+<p>预览版给用户提供了一个新的方式，通过助手来同你的应用交互。要使用这一功能，用户必须允许助手使用当前的上下文。一旦允许后，用户可以在任意应用中通过长按<strong>Home</strong>键来唤起助手。</p>
+<p>你的应用可以通过设置<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/view/WindowManager.LayoutParams.html#FLAG_SECURE">FLAG_SECURE</a>标志来选择不向助手分享当前上下文。除了平台本身传递给助手的信息之外，你的应用还可以通过新的<code>android.app.Activity.AssistContent</code>类来分享额外信息。</p>
+<p>要想分享你的应用中的额外信息，请跟随以下步骤：   </p>
+<ol>
+<li>实现<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/app/Application.OnProvideAssistDataListener.html">Application.OnProvideAssistDataListener</a>接口。   </li>
+<li>使用<a href="%22http://developer.android.com/reference/android/app/Application.html#registerOnProvideAssistDataListener(android.app.Application.OnProvideAssistDataListener)%22">registerOnProvideAssistDataListener()</a>注册这个接口。   </li>
+<li>为了提供基于上下文的活动行为，覆写<a href="%22http://developer.android.com/reference/android/app/Activity.html#onProvideAssistData(android.os.Bundle)%22">onProvideAssistData()</a>回掉调，或者可以选择使用新的<code>Activity.onProvideAssistContent()</code>回调。</li>
+</ol>
+<h3 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h3><hr>
+<p>预览版添加了下列与通知相关的API更改：</p>
+<ul>
+<li>新的<code>NotificationListenerService.INTERRUPTION_FILTER_ALARMS</code>过滤级别，用以同新的<em>只允许闹钟</em>的勿扰模式匹配。   </li>
+<li>新的<code>Notification.CATEGORY_REMINDER</code>分类值，用于将用户计划的提醒同其他的提醒(<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/app/Notification.html#CATEGORY_EVENT">CATEGORY_EVENT</a>)和闹钟(<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/app/Notification.html#CATEGORY_ALARM">CATEGORY_ALARM</a>)区分开来.</li>
+<li>新的<code>android.graphics.drawable.Icon</code>类，可以通过使用<code>Notification.Builder.setSmallIcon(Icon)</code>和<code>Notification.Builder.setLargeIcon(Icon)</code>方法添加到你的通知上去。   </li>
+<li>新的<code>NotificationManager.getActiveNotifications()</code>方法，以允许你的应用可以可以找出哪些通知是处于活动状态的。想要查看使用了这一功能的应用实现，查看<a target="_blank" rel="noopener" href="https://github.com/googlesamples/android-ActiveNotifications">活动通知示例</a>。</li>
+</ul>
+<h3 id="蓝牙压感支持"><a href="#蓝牙压感支持" class="headerlink" title="蓝牙压感支持"></a>蓝牙压感支持</h3><hr>
+<p>预览版改进提升了对使用蓝牙压感输入的支持。用户可以将兼容的蓝牙压感设备同他们的手机或者平板配对连接。当连接后，从触摸屏获得的位置信息将混合压感设备的压力和按钮信息，以提供比单单使用触摸屏更大范围的表达方式。你的应用可以通过在Activity中注册新的<code>View.onStylusButtonPressListener</code>和<code>GestureDetector.OnStylusButtonPressListener</code>回调来监听压感按钮按下事件以出发次级行为。</p>
+<p>使用<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/view/MotionEvent.html">MotionEvent</a>方法和常量来识别压感按钮交互：</p>
+<ul>
+<li>如果用户使用压感笔来点击你应用屏幕上的按钮，<a href="%22http://developer.android.com/reference/android/view/MotionEvent.html#getToolType(int)%22">getTooltype()</a>方法将返回<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/view/MotionEvent.html#TOOL_TYPE_STYLUS">TOOL_TYPE_STYLUS</a>。</li>
+<li>为Android M设计的应用，<a href="%22http://developer.android.com/reference/android/view/MotionEvent.html#getButtonState()%22">getButtonState()</a>方法在用户点击主压感按钮时会返回<code>MotionEvent.STYLUS_BUTTON_PRIMARY</code>，如果是一个次级压感按钮被用户按下，同一个方法会返回<code>MotionEvent.STYLUS_BUTTON_SECONDARY</code>。如果用户同时按下两级按钮，这个方法会返回两个值或运算后的结果（<code>STYLUS_BUTTON_PRIMARY|STYLUS_BUTTON_SECONDARY</code>）。</li>
+<li>为低版本设计的应用，<a href="%22http://developer.android.com/reference/android/view/MotionEvent.html#getButtonState()%22">getButtonState()</a>方法返回<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/view/MotionEvent.html#BUTTON_SECONDARY">BUTTON_SECONDARY</a>(当主要压感按钮被按下)，<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/view/MotionEvent.html#BUTTON_TERTIARY">BUTTON_TERTIARY</a>(当次级压感按钮被按下)，或者同时返回两者。</li>
+</ul>
+<h3 id="提升蓝牙低功耗扫描"><a href="#提升蓝牙低功耗扫描" class="headerlink" title="提升蓝牙低功耗扫描"></a>提升蓝牙低功耗扫描</h3><hr>
+<p>如果你的应用提供了蓝牙低功耗扫描，你可以使用新的<code>android.bluetooth.le.ScanSettings.Builder.setCallbackType()</code>方法来标明你只希望接收到的能够最先匹配设置了<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/bluetooth/le/ScanFilter.html">ScanFilter</a>的广播包，当这种包已经有一段时间没有接收到了。这一扫描方式比以前平台版本提供的更高效节能。</p>
+<h3 id="热点2-0第一版支持"><a href="#热点2-0第一版支持" class="headerlink" title="热点2.0第一版支持"></a>热点2.0第一版支持</h3><hr>
+<p>预览版在Nexus 6和Nexus 9上提高了对热点2.0第一版规格的支持。使用<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/net/wifi/WifiEnterpriseConfig.html">WifiEnterpriseConfig</a>类的方法，例如<code>setPlmn()</code>和<code>setRealm()</code>来在你的应用中使用热点2.0的证书。在<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/net/wifi/WifiConfiguration.html">WifiConfiguration</a>对象中，你可以设置<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/net/wifi/WifiConfiguration.html#FQDN">FQDN</a>和<code>providerFriendlyName</code>的值。如果指定网络是热点2.0的接入点，新的<code>ScanResult.PasspointNetwork</code>属性会表明。</p>
+<h3 id="4K显示模式"><a href="#4K显示模式" class="headerlink" title="4K显示模式"></a>4K显示模式</h3><hr>
+<p>安卓平台现在允许应用进行在兼容的平台显示分辨率提升到了4K渲染。使用新的<code>android.view.Display.Mode</code>的API来查询当前的物理分辨率。如果UI以低逻辑分辨率绘制但是放大到大尺寸物理分辨率显示时，请注意<code>Display.Mode.getPhysicalWidth()</code>方法返回值会跟<a href="%22http://developer.android.com/reference/android/view/Display.html#getSize(android.graphics.Point)%22">getSize()</a>报告的逻辑分辨率不一致。</p>
+<p>你可以通过在你的应用窗口中设置<code>WindowManager.LayoutParams.preferredDisplayModeId</code>属性来在应用运行时请求系统更改物理分辨率。这个功能在你想切换到4K分辨率时非常有用。当处于4K模式时，UI会继续使用原始分辨率进行渲染（如1080P）然后放大到4K，但是<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/view/SurfaceView.html">SurfaceView</a>对象会按照本地分辨率来显示内容。</p>
+<h3 id="可设置主题的ColorStateLists"><a href="#可设置主题的ColorStateLists" class="headerlink" title="可设置主题的ColorStateLists"></a>可设置主题的ColorStateLists</h3><hr>
+<p>现在，运行M预览版的设备在<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/content/res/ColorStateList.html">ColorStateList</a>中已经支持主题属性。<a href="%22http://developer.android.com/reference/android/content/res/Resources.html#getColorStateList(int)%22">getColorStateList()</a>和<a href="%22http://developer.android.com/reference/android/content/res/Resources.html#getColor(int)%22">getColor()</a>方法已经被废弃了。如果你要调用这些API，调用新的<code>Context.getColorStateList()</code>或<code>Context.getColor()</code>来代替原来的方法。这些方法还可以在v4 appcompat库中通过<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/support/v4/content/ContextCompat.html">ContextCompat</a>调用。</p>
+<h3 id="视频功能"><a href="#视频功能" class="headerlink" title="视频功能"></a>视频功能</h3><hr>
+<p>预览版为视频功能API加入了新的功能，包括以下几处：</p>
+<ul>
+<li>新的<code>android.media.MediaSync</code>类用于帮助同步渲染音频与视频流。音频buffer会以非阻塞的方式通过回调进行返回。而且还支持动态播放率。</li>
+<li>新的<code>MediaDrm.EVENT_SESSION_RECLAIMED</code>事件，它标明明应用打开的回话已经被资源管理器回收。如果你的应用使用了DRM回话，那么你必须处理这一事件来确保不要使用已经回收的回话。</li>
+<li>新的<code>MediaCodec.CodecException.ERROR_RECLAIMED</code>错误码，它标明资源管理器回收了解码器使用的媒体资源。如果遭遇这一异常，解码器必须被释放，因为它已经处在中止状态。</li>
+<li>新的<code>MediaCodecInfo.CodecCapabilities.getMaxSupportedInstances()</code>接口来获取解码器实例支持的最大并发数的相关提示。</li>
+<li>新的<code>MediaPlayer.setPlaybackParams()</code>方法来设置快或者慢动作的媒体播放速率。它同时会自动加快或减慢音频的播放速率。</li>
+</ul>
+<h3 id="相机功能"><a href="#相机功能" class="headerlink" title="相机功能"></a>相机功能</h3><hr>
+<p>预览版包含以下访问相机闪光灯和相机图像再处理的API：</p>
+<h4 id="闪光灯API"><a href="#闪光灯API" class="headerlink" title="闪光灯API"></a>闪光灯API</h4><p>如果相机设备包含闪光灯模组，你可以调用<code>CameraManager.setTorchMode()</code>方法来在不打开相机的情况下打开或关闭火炬模式。应用没有对闪光灯模组和相机设备的独占式请求。火炬模式将会在相机不可用时，或者在其他相机资源保持火炬模式变为不可用时关闭并且停用。其他应用也可以通过调用<code>setTorchMode()</code>来关闭火炬模式。当最后一个应用关闭火炬模式后，火炬模式将会关闭。</p>
+<p>你可以通过调用<code>CameraManager.registerTorchCallback()</code>方法来注册火炬模式状态改变的回调。当回调第一次注册时，他会立即返回当前已知的所有包含闪光灯模组的相机设备。如果火炬模式成功的开启或关闭，<code>CameraManager.TorchCallback.onTorchModeChanged()</code>方法将会被调用。</p>
+<h4 id="再处理API"><a href="#再处理API" class="headerlink" title="再处理API"></a>再处理API</h4><p><a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/hardware/camera2/package-summary.html">Camera2</a> API扩展了对YUV和私有不透明格式图像的再处理。通过调用<a href="%22http://developer.android.com/reference/android/hardware/camera2/CameraManager.html#getCameraCharacteristics(java.lang.String)%22">getCameraCharacteristics()</a>来检查<code>REPROCESS_MAX_CAPTURE_STALL</code>关键字来判断是否具备再处理能力。如果设备支持再处理，你可以通过调用<code>CameraDevice.createReprocessableCaptureSession()</code>来创建一个可以再处理的相机捕获会话，并且创建输入缓冲再处理请求。</p>
+<p>使用<code>android.media.ImageWriter</code>来连接输入缓冲流到相机再处理输入。下面是如果拿到一个空缓冲的编程模式：</p>
+<ol>
+<li>调用<code>ImageWriter.dequeueInputImage()</code>方法。</li>
+<li>将数据填入输入缓冲。</li>
+<li>通过调用<code>ImageWriter.queueInputImage()</code>方法将缓冲区发送到相机。</li>
+</ol>
+<p>如果你将<code>ImageWriter</code>同一个<code>android.graphics.ImageFormat.PRIVATE</code>图片一起使用，你的应用将不能直接访问图像数据。取而代之的是通过不带缓冲拷贝的调用<code>ImageWriter.queueInputImage()</code>方法来直接传递<code>ImageFormat.PRIVATE</code>图像到<code>ImageWriter</code>.</p>
+<p><a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/media/ImageReader.html">ImageReader</a>类现在支持<code>android.graphics.ImageFormat.PRIVATE</code>格式的图片流。这种支持允许你的应用维持一个<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/media/ImageReader.html">ImageReader</a>输出图像队列，选择一个或多个图像，然后发送到<code>ImageWriter</code>做相机再处理。</p>
+<h3 id="Android-for-Work功能"><a href="#Android-for-Work功能" class="headerlink" title="Android for Work功能"></a>Android for Work功能</h3><hr>
+<p>预览版包含以下Android for Work的API：</p>
+<ul>
+<li><p><strong>对公司所有的单人使用设备的增强控制：</strong>现在设备所有者可以控制一下设置来改进对公司所有单人使用的设备的管理（COSU)：</p>
+<ul>
+<li>通过<a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#setKeyguardDisabled(android.content.ComponentName,%20boolean)%22">setKeyguardDisabled()</a>方法来禁用或启用键盘锁。”</li>
+<li>通过<a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#setStatusBarDisabled(android.content.ComponentName,%20boolean)%22">setStatusBarDisabled()</a>方法来禁用或启用状态栏（包括快速设置、通知和滑动运用Google即时的手势)。</li>
+<li>通过<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/os/UserManager.html">UserManager</a>的常量<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/os/UserManager.html#DISALLOW_SAFE_BOOT">DISALLOW_SAFE_BOOT</a>来禁用或启用安全启动。</li>
+<li>使用<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/provider/Settings.Global.html#STAY_ON_WHILE_PLUGGED_IN">STAY_ON_WHILE_PLUGGED_IN</a>常量来防止屏幕在插入电源时关闭。</li>
+</ul>
+</li>
+<li><p><strong>设备所有者可以静默安装和卸载应用：</strong>设备所有者现在可以使用<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/content/pm/PackageInstaller.html">PackageInstaller</a>API来静默安装卸载应用，这是独立于Google Play for Work的。你可以作为设备所有者在没有用户交互的情况下来获取和安装应用完成设备准备。这一功能在一键准备或者设备没有激活Google账户的情况下非常有用。</p>
+</li>
+<li><p><strong>静默的企业证书访问：</strong>当一个应用调用<a href="%22http://developer.android.com/reference/android/security/KeyChain.html#choosePrivateKeyAlias(android.app.Activity,%20android.security.KeyChainAliasCallback,%20java.lang.String%5B%5D,%20java.security.Principal%5B%5D,%20java.lang.String,%20int,%20java.lang.String)%22">choosePrivateKeyAlias()</a>时，之前用户会被弹出提醒选择证书，现在个人或设备所有者可以调用<a href="%22http://developer.android.com/reference/android/app/admin/DeviceAdminReceiver.html#onChoosePrivateKeyAlias(android.content.Context,%20android.content.Intent,%20int,%20android.net.Uri,%20java.lang.String)%22">onChoosePrivateKeyAlias()</a>方法来向请求的应用程序静默地提供别名。这一功能让你能够在没有交互的情况下授权管理用户访问证书。</p>
+</li>
+<li><p><strong>自动接受系统更新：</strong>通过使用<a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#setSystemUpdatePolicy(android.content.ComponentName,%20android.app.admin.SystemUpdatePolicy)%22">setSystemUpdatePolicy()</a>设置系统更新策略。设备所有者现在可以自动接受系统更新，例如以防有大量的设备或者推迟更新并防止用户在长达30天里应用更新。此外，管理员还可以设置时间窗口。例如在数小时内大量设备不会在使用的时间。当系统更新可用时，系统将会检查工作策略控制应用是否设置了系统更新策略，并依据此进行操作。</p>
+</li>
+<li><p><strong>授权证书安装：</strong>配置和设备所有者现在可以向第三方应用授予调用<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html">DevicePolicyManager</a>API来管理证书的能力：</p>
+<ul>
+<li><a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#getInstalledCaCerts(android.content.ComponentName)%22">getInstalledCaCerts()</a></li>
+<li><a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#hasCaCertInstalled(android.content.ComponentName,%20byte%5B%5D)%22">hasCaCertInstalled()</a></li>
+<li><a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#installCaCert(android.content.ComponentName,%20byte%5B%5D)%22">installCaCert()</a></li>
+<li><a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#uninstallCaCert(android.content.ComponentName,%20byte%5B%5D)%22">uninstallCaCert()</a></li>
+<li><a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#uninstallAllUserCaCerts(android.content.ComponentName)%22">uninstallAllUserCaCerts()</a></li>
+<li><a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#installKeyPair(android.content.ComponentName,%20java.security.PrivateKey,%20java.security.cert.Certificate,%20java.lang.String)%22">installKeyPair()</a></li>
+</ul>
+</li>
+<li><p><strong>数据使用跟踪：</strong>配置和设备所有者现在可以通过新的<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/app/usage/NetworkStatsManager.html">NetworkStatsManager</a>方法来查询在<strong>设置-&gt;数据</strong>中可见的数据使用情况统计。配置所有者自动授权查询他们管理的配置上管理的数据，而设备所有者访问被管理的主要用户的数据使用情况。</p>
+</li>
+<li><p><strong>运行时权限管理：</strong>配置和权限管理员可以为所有使用了<a href="%22http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#setPermissionPolicy(android.content.ComponentName,%20int)%22">setPermissionPolicy()</a>设置了运行中请求的应用设置权限政策，而不是提醒用户授权或是静默地自动授权或拒绝授权。如果后者政策被设置了，用户将不能在<strong>设置</strong>中的应用权限屏幕更改由配置或设备管理员设定的选项。</p>
+</li>
+<li><p><strong>在设置中的VPN：</strong>VPN应用现在可以在<strong>设置-&gt;更多-&gt;VPN</strong>。此外，伴随VPN使用情况的通知消息现在还会指明VPN是如何配置的。对一个配置所有者，通知消息会表明VPN是否被一个已管理的配置文件、个人配置文件或者两者一起所配置。对一个设备所有者来说，通知消息会表明VPN是否是为整个设备所配置。</p>
+</li>
+<li><p><strong>工作状态通知：</strong>无论什么时候一个管理配置文件里面的应用在前台活动时都会出现一个公文包通知栏图标在状态栏。此外，如果一个设备是被一个管理配置文件中的应用活动直接解锁的话，一个toast消息将会通知用户他们处于工作配置中了。</p>
+</li>
+</ul>
+<p>| 想要查看所有M预览版中的API更改，请查阅<a target="_blank" rel="noopener" href="http://developer.android.com/preview/download.html">API差异报告</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siyang.li/2015/06/01/2015-06-01-fan-yi-android-m-api-yu-lan/" data-id="ckjpm8q4s000s07hobv7a4nhv" data-title="[翻译]Android M API 概览" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2015-05-24-2015-google-i-slash-oda-hui-kan-dian-yu-ce" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/05/24/2015-05-24-2015-google-i-slash-oda-hui-kan-dian-yu-ce/" class="article-date">
+  <time class="dt-published" datetime="2015-05-24T10:52:23.000Z" itemprop="datePublished">2015-05-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Google-I-O-2015/">Google I/O 2015</a>►<a class="article-category-link" href="/categories/Google-I-O-2015/Android/">Android</a>►<a class="article-category-link" href="/categories/Google-I-O-2015/Android/Nexus/">Nexus</a>►<a class="article-category-link" href="/categories/Google-I-O-2015/Android/Nexus/Moto-360/">Moto 360</a>►<a class="article-category-link" href="/categories/Google-I-O-2015/Android/Nexus/Moto-360/Polymer/">Polymer</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/05/24/2015-05-24-2015-google-i-slash-oda-hui-kan-dian-yu-ce/">2015 Google I/O大会看点预测</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>2015年的Google I/O大会将在5月28日召开，每年的I/O大会总会发布许多新技术和新产品，在这里列举了一些科技媒体的预测和我自己的一些看法，等到5月28日过后，再来看看这些预测有哪些是准确的。</p>
+<h3 id="看点1-Android-M"><a href="#看点1-Android-M" class="headerlink" title="看点1. Android M"></a>看点1. Android M</h3><p>去年I/O大会上Google公布了Android L版本，考虑到Lollipop版本已经经历了5.0和5.1两个版本号，那么Android M作为下一个发布的版本号是很有可能的。网上媒体很多都认为这有可能是Android 6.0版本，不过我觉得按照Google的节奏应该不会在这个版本上更新版本号，也就是说依然还会是5.x的版本，很有可能就是5.2版本。 而这个版本会带来哪些新功能呢？结合网上泄漏的消息和媒体预测，我认为是以下几个：</p>
+<ol>
+<li>更多对企业用户的支持。目前Android主要还是针对个人用户，在Android M中Google可能会加入更便于企业用户使用的功能，从而尝试在企业用户市场发力。</li>
+<li>原生的指纹识别功能。其实在Nexus 6发布的时候就传言说可能会加入原生的指纹识别功能，Nexus 6背后那个大大的Moto Logo的位置就是为指纹传感器预留的，不过由于指纹传感器的供货问题，最终没能将指纹识别功能加入原生系统。这也就导致了Android在这上面落后了iOS系统，导致Google更难抢占移动支付的市场，所以在Android M中加入原生的指纹识别就成了当务之急。</li>
+<li>原生的多窗口支持。Android上的多窗口实现Samsung很早就做了，但是原生系统一直没有多窗口的支持。随着Google在桌面和企业用户市场上的野心扩大，在Android系统加入原生的多窗口支持也就成了顺理成章的事情。况且有传言说iOS9也会提供多窗口的支持，Google肯定不愿意在这一项上落在老对手的后面的。</li>
+</ol>
+<h3 id="看点2-Moto-360二代"><a href="#看点2-Moto-360二代" class="headerlink" title="看点2. Moto 360二代"></a>看点2. Moto 360二代</h3><p>去年的I/O大会上展示的Moto 360着实吸引了大家的眼球，被大家一致评价为最漂亮的智能手表。之前我曾经犹豫过是否要买一只Moto 360，但是它的存在的几个比较明显的缺点最终还是让我打消了购买的想法（说那么多干啥，归根结底就是穷嘛）。我觉得得的缺点就是一下几个：</p>
+<ol>
+<li>表盘不是Retina屏幕。主要还是手机上已经习惯了Retina的屏幕，突然看到一个可以像素点明显的设备，还真有点瞎了狗眼的感觉。</li>
+<li>表盘不是完整的圆形。下面缺失的一块总让人觉得少了点什么，强迫症患者表示不能接受。</li>
+<li>使用了一颗过时的处理器。Moto你是积压了多少德仪的处理器，到现在都还没用完，德州仪器自己都表示不再生产移动设备的处理器了。虽说手表确实不需要多高的性能支持，但是Moto你搞个45nm工艺的处理器就明显诚意不足了哈，发热和功耗凭这颗处理器就降不下来。</li>
+<li>续航太短。上面说了，就是那颗2010-2011年Ti OMAP 3630处理器，45nm的工艺怎么来改善续航。手表又不像手机，可以做大点多放电池。另外，因为使用的不是OLED屏幕，为了保证续航，就没有办法使屏幕长亮，这也算是缺点之一吧。不过要是使用OLED的话估计又有人会闹烧屏的问题了吧，这个就见仁见智了。不让手表长亮我觉得还OK啦，又不是要随时去看时间的。</li>
+<li>稍微还是厚了点。我手腕太细了，带一个太厚的手表还是不太好看。不过这个就纯属个人感受了。</li>
+</ol>
+<p>总结起来就是：Moto 360二代要是能够解决上面的几个问题，那我就准备买买买了！</p>
+<h3 id="看点3-虚拟现实"><a href="#看点3-虚拟现实" class="headerlink" title="看点3. 虚拟现实"></a>看点3. 虚拟现实</h3><p>去年Google发布了一款Cardboard虚拟现实眼镜（其实就是一个纸盒子带两个镜片），在虚拟现实最近两年一直很火爆的情况下Google可能还会对这个纸盒子升级一下吧。</p>
+<h3 id="看点4-智能家居"><a href="#看点4-智能家居" class="headerlink" title="看点4. 智能家居"></a>看点4. 智能家居</h3><p>Google在花巨资收购了智能温控器制造商Nest公司后一直没有什么动作（在Google Store上卖温控器可不算哈）。在智能家居如此之火，随便哪个硬件厂商都要炒作一下智能家居这个概念的情况下，Google也该有点动作了。说不定今年的I/O大会上就会有深度整合的产品发布。</p>
+<h3 id="看点5-Android-Auto"><a href="#看点5-Android-Auto" class="headerlink" title="看点5. Android Auto"></a>看点5. Android Auto</h3><p>Android Auto和苹果的Apple CarPlay自发布后就没见到有啥动静，都是雷声大雨点小（难道是我处的圈子根本接触不到这些吗？）。估计还是需要和手机搭配使用的繁琐导致不太受欢迎吧。据传Google将在本次I/O大会上发布可以独立运行的Android Auto,这样的话就可以独立运行Google Maps，Google Music等服务而不再需要依赖手机了。</p>
+<h3 id="看点6-Google-Glass"><a href="#看点6-Google-Glass" class="headerlink" title="看点6. Google Glass"></a>看点6. Google Glass</h3><p>价格昂贵（$2000），带上看起来很奇怪的Google Glass自从下架后就从人们的视野中消失很久了，连官网上都只剩下<code>THE JOURNEY DOESN&#39;T END HERE</code>这么一句话了，但是在今年的I/O大会上有可能会再次出现有关它的信息，说不定会有全新的设计，并以更便宜的价格销售哦。</p>
+<h3 id="看点7-Nexus设备"><a href="#看点7-Nexus设备" class="headerlink" title="看点7. Nexus设备"></a>看点7. Nexus设备</h3><p>要我来评价Nexus 6就是三个字：太大了！5.96寸简直是接受不能啊。所以说才一直不想去买这么大的一个手机来放裤兜里。不过坊间传言华为已经在为生产下一代Nexus手机做准备了（不过好像还是很大，5.7寸的）。不过还有传言说LG也在准备另外一款5.2寸屏幕的Nexus手机，也许这次额i/O大会就会有相关的信息（总有钱包在蠢蠢欲动的感觉）。</p>
+<h3 id="看点8-Photos"><a href="#看点8-Photos" class="headerlink" title="看点8. Photos"></a>看点8. Photos</h3><p>用Google Plus的人不多，其实Google Plus还是有一些很赞的功能的，比如说社群。这里要说的是另外一个—-Photos。我最喜欢的就是Photos能够自动同步所有的照片以及自动添加一些标签和特效（特效哦，duang的一下）。据说Google将会把Photos作为一个单独的产品发布，还是很值得期待的。</p>
+<h3 id="看点9-语音控制"><a href="#看点9-语音控制" class="headerlink" title="看点9. 语音控制"></a>看点9. 语音控制</h3><p>手机屏幕越来越大，手指感觉已经力不从心了。另外，一些常用频繁的操作还总需要打断正在做的事情去切换处理总让人感觉智能手机还不够智能。Google打算加入Voice Access来强化Android系统的语音控制功能，来引入一种新的智能设备操作方式。感觉还是很值得期待的（我知道在公共场所和一个手机对话是一件很stupid的事情，不过要是你边做饭还可以边发微信，而且还不用中断你手上的活的话还是很值得期待的哦）。</p>
+<h3 id="看点10-Polymer"><a href="#看点10-Polymer" class="headerlink" title="看点10. Polymer"></a>看点10. Polymer</h3><p>去年的I/O大会上就介绍了Ploymer，截止到今天Polymer已经进入到0.9Beta版，今年的I/O大会很有可能就会发布正式版。Google声称Polymer是用于变革网页浏览体验的武器，要让网页像App一样使用。不过到目前为止，并没有很多的开发者响应，只有期望Polymer正式发布后，能够打动开发者的心了。</p>
+<hr>
+<p>以上就是在2015年Google I/O大会前对于此次大会相关看点的预测和我自己的一些看法。在I/O大会正式召开过后，再来回顾看看有多少预测是准确的，又有哪些意料之外的事情。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siyang.li/2015/05/24/2015-05-24-2015-google-i-slash-oda-hui-kan-dian-yu-ce/" data-id="ckjpm8q4g000107hob1574s99" data-title="2015 Google I/O大会看点预测" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2015-05-23-kan-ke-zhi-lu-,zhong-di-qun-xing-bo-ke-shang-de-di-yi-pian-wen-zhang" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/05/22/2015-05-23-kan-ke-zhi-lu-,zhong-di-qun-xing-bo-ke-shang-de-di-yi-pian-wen-zhang/" class="article-date">
+  <time class="dt-published" datetime="2015-05-22T23:10:17.000Z" itemprop="datePublished">2015-05-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Blog/Octopress/">Octopress</a>►<a class="article-category-link" href="/categories/Blog/Octopress/Github-Pages/">Github Pages</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/05/22/2015-05-23-kan-ke-zhi-lu-,zhong-di-qun-xing-bo-ke-shang-de-di-yi-pian-wen-zhang/">坎坷之路，终抵群星——博客上的第一篇文章</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>很久之前便有了搭建一个自己的博客的打算，不过之前由于长期存在的拖延症的问题，一直没有行动。后面终于下定决心要开始做这个事，VPS也买了，域名也买了，不过终究还是没有落实到行动上。直到最近进入到新的项目组，碰到了刚刚出差回来的小明同学，在看过了小明同学的Blog过后，才终于决定要付诸行动。</p>
+<p>之前考虑的使用WordPress把博客搭建在自己的服务器上，但是考虑到VPS的稳定性和后期的维护（其实就是比较懒），最终还是选择了和小明同学一样的方案：使用Octopress，使用GitHub Pages来部署（主要还是因为足够简单）。下面还是简单介绍一下：</p>
+<h3 id="Octopress"><a href="#Octopress" class="headerlink" title="Octopress"></a>Octopress</h3><p>Octopress自己在官网上的的介绍就是<code>A blogging framework for hackers</code>，它是一个静态博客引擎。“为黑客设计的博客框架”，听起来还很高端的感觉，其实并没有。只是说Octopress可以纯命令行编辑和部署，很受黑客喜欢而已。关于Octopress的搭建和部署网上各种文章已经很多了，我在这里就不再详细介绍了。只谈两点我在搭建时遇到的小问题：</p>
+<ol>
+<li><p>Octopress提交到GitHub的repository有两个branch，一个master，一个source。master就是GitHub Pages呈现的页面内容，而source就是用于生成页面的源代码了。在source这个branch根目录运行<code>rake generate</code>过后会在<code>_deploy</code>目录下生成master branch的文件，这个时候再运行<code>rake deploy</code>就会自动进入<code>_deploy</code>目录，将master的内容commit并push到你的repo，再回到根目录中。<code>_deploy</code>目录默认是加入了source branch的<code>.gitignore</code>文件的。你如果想在不同的电脑进行blog的管理，那么也记得将source push到repo上。换了电脑过后将这个branch clone下来就可以继续管理blog了。</p>
+</li>
+<li><p>在国内使用Octopress会存在一个隐藏的坑。因为Octopress是基于ruby的，而由于某种莫名其妙的原因，连接<strong>rubygems.org</strong>会出现链接被重置的情况，这直接导致了无法在国内使用gem来进行ruby的包管理。还好淘宝的代码库有一个<strong>rubygems.org</strong>的镜像<strong>ruby.taobao.org</strong>，只要将gem的source地址指向淘宝的镜像站便可搞定这个问题。使用方法如下：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources --remove https:&#x2F;&#x2F;rubygems.org&#x2F;</span><br><span class="line">$ gem sources -a https:&#x2F;&#x2F;ruby.taobao.org&#x2F;</span><br><span class="line">$ gem sources -l</span><br><span class="line">*** CURRENT SOURCES ***</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;ruby.taobao.org</span><br><span class="line"># 请确保只有 ruby.taobao.org</span><br></pre></td></tr></table></figure>
+<p>另外，由于Octopress还用到了bundle，所以还需要将根目录下<code>Gemfile</code>文件中的第一行改为<code>source &#39;https://ruby.taobao.org/&#39;</code>，这样所有的包都将会从淘宝镜像下载，绕过了国内网络的问题。PS:使用https有可能会遇到<code>ERROR:  While executing gem ... (OpenSSL::SSL::SSLError)</code>这个问题，这时把淘宝镜像改成使用http协议访问就可以了。</p>
+</li>
+</ol>
+<p>关于怎么搭建和部署，Octopress的官网文档已经介绍得很清楚了，只需要按照步骤做下去就好了。详见<a target="_blank" rel="noopener" href="http://octopress.org/docs/">Octopress Documentation</a>.</p>
+<h3 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h3><p>GitHub大家应该都不陌生了，GitHub Pages的初衷是为了让用户建立一个托管在GitHub的静态页面用于介绍自己的项目或者一个简单的主页。不过从一开始GitHub就鼓励大家使用Pages来<code>Create a blog and spread your ideas. Whatever you want!</code>，所以，使用GitHub Pages来搭建博客也算是充分利用了GitHub提供的资源，省去了自己架设的麻烦。</p>
+<p>详情可以访问<a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>来查看相关的介绍和教程。</p>
+<h3 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h3><p>Octopress中上传的文章都是使用Markdown书写的，本文也不例外。Markdown是一种轻量级的标记语言，由John Gruber创造，大名鼎鼎的Aaron Swartz也参与了Markdown的开发。它的目标就是为了实现<code>易写易读</code>。markdown的语法全是由一些符号组成的，而这些符号代表的意思几乎是一目了然的。以Markdown撰写的文件是能够直接阅读的，而不会让人觉得看起来是由一些标签或者格式指令构成的.Markdown 的理念是，能让文档更容易读、写和随意改。关于Markdown的语法，可以从<a target="_blank" rel="noopener" href="http://wowubuntu.com/markdown/">Markdown 语法说明 (简体中文版)</a>查阅。</p>
+<hr>
+<p>关于Blog的搭建就先讲这么多了。开设博客的原因还是在用于记录自己在遇到和解决了的问题，以及写下自己的一些看法和思考。到现在差不多毕业已经三年了，在ThoughWorks这样的环境中总觉得自己还有很大差距，看到的东西越多结果越发觉自己懂得越少，可能经历了这样的过程才能更快的成长吧。之前走了不少的弯路，掉了不少的坑，现在是时候爬出来，不断地去强化自己，脚踏实地的继续前行了。多读书，多写代码，同时还需要多思考和注意积累，才能让接下来的每一步走得更稳，更快。</p>
+<p>标题为什么叫<code>坎坷之路，终抵群星</code>呢？这是NASA在阿波罗1号发生事故后为纪念三名牺牲的航天员的两块纪念铭牌其中一块上面的一句话:</p>
+<blockquote>
+<p>IN MEMORY</p>
+<p>OF<br>THOSE WHO MADE THE ULTIMATE SACRIFICE<br>SO OTHERS COULD REACH FOR THE STARS   </p>
+<p>AD ASTRA PER ASPERA<br>(A ROUGH ROAD LEADS TO THE STARS)   </p>
+<p>GOD SPEED TO THE CREW<br>OF<br>APOLLO 1   </p>
+</blockquote>
+<p>这句话其实是一句拉丁语<code>AD ASTRA PER ASPERA</code>，英文翻译为<code>A ROUGH ROAD LEADS TO THE STARS</code>。通往璀璨星空的路总是会遇到坡坎挫折，但是走过崎岖坎坷的路终将抵达灿烂的星空。人类在太空探索上是这样，在其他任何领域也都是这样。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siyang.li/2015/05/22/2015-05-23-kan-ke-zhi-lu-,zhong-di-qun-xing-bo-ke-shang-de-di-yi-pian-wen-zhang/" data-id="ckjpnfzdx0000z2ho3sud5xvk" data-title="坎坷之路，终抵群星——博客上的第一篇文章" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/Octopress/">Octopress</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/Octopress/Github-Pages/">Github Pages</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Google-I-O-2015/">Google I/O 2015</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Google-I-O-2015/Android/">Android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Google-I-O-2015/Android/Nexus/">Nexus</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Google-I-O-2015/Android/Nexus/Moto-360/">Moto 360</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Google-I-O-2015/Android/Nexus/Moto-360/Polymer/">Polymer</a></li></ul></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mobile-App/">Mobile App</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mobile-App/Android/">Android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mobile-App/Android/iOS/">iOS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mobile-App/Android/iOS/HTML5/">HTML5</a></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Robolectric/">Robolectric</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Robolectric/Android/">Android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Robolectric/Android/Unit-Test/">Unit Test</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/android/M-preview/">M preview</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/07/2016-06-07-qian-tan-yi-dong-ying-yong-de-ji-zhu-xuan-xing/">浅谈移动应用的技术选型</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/29/2015-11-30-robolectric-3-dot-0yu-android-sdk-23-yi-qi-shi-yong-shi-de-ji-ge-keng/">Robolectric 3.0与Android SDK 23一起使用时的几个坑</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/01/2015-06-01-fan-yi-android-m-api-yu-lan/">[翻译]Android M API 概览</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/24/2015-05-24-2015-google-i-slash-oda-hui-kan-dian-yu-ce/">2015 Google I/O大会看点预测</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/22/2015-05-23-kan-ke-zhi-lu-,zhong-di-qun-xing-bo-ke-shang-de-di-yi-pian-wen-zhang/">坎坷之路，终抵群星——博客上的第一篇文章</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 Siyang Li<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
