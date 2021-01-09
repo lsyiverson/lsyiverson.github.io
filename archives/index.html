@@ -1,300 +1,590 @@
 <!DOCTYPE html>
 <html>
+<meta  lang="zh-CN" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#fff" id="theme-color">
+  <link rel="icon" href="/images/logo.jpg">
+  <title>Siyang Li's blog</title>
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+    var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+      }
+    };
+    setDarkmode();
+  </script>
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  </script>
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_vpj3dq9ceqa.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  
+  <link rel="preload" href="//cdn.jsdelivr.net/npm/fslightbox@3.1.0/index.min.js" as="script">
   
   
-  <title>Archives | Siyang Li&#39;s blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Siyang Li&#39;s blog">
-<meta property="og:url" content="http://siyang.li/archives/index.html">
-<meta property="og:site_name" content="Siyang Li&#39;s blog">
-<meta property="og:locale">
-<meta property="article:author" content="Siyang Li">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Siyang Li's blog" type="application/atom+xml">
+  <link rel="preload" href="/js/lib/lozad.min.js" as="script">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
   
   
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/main.css">
 
   
   
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_vpj3dq9ceqa.css">
 
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
 
+  
+  
   
 <meta name="generator" content="Hexo 5.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Siyang Li&#39;s blog</a>
-      </h1>
+  <div class="wrapper">
+    
+    <nav class="navbar">
+  <div class="navbar-logo">
+    <span class="navbar-logo-main">
       
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">A ROUGH ROAD LEADS TO THE STARS</a>
-        </h2>
+      <img class="navbar-logo-img" src="/images/logo.jpg">
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://siyang.li"></form>
-      </div>
-    </div>
+      <span class="navbar-logo-dsc">Siyang Li's blog</span>
+    </span>
   </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-  
+  <div class="navbar-menu">
     
+    <a href="/" class="navbar-menu-item">首页 </a>
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
+    <a href="/archives" class="navbar-menu-item">归档 </a>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/07/2016-06-07-qian-tan-yi-dong-ying-yong-de-ji-zhu-xuan-xing/" class="archive-article-date">
-  <time class="dt-published" datetime="2016-06-07T07:21:07.000Z" itemprop="datePublished">Jun 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/07/2016-06-07-qian-tan-yi-dong-ying-yong-de-ji-zhu-xuan-xing/">浅谈移动应用的技术选型</a>
-    </h1>
-  
-
-    </header>
+    <a href="/categories" class="navbar-menu-item">分类 </a>
+    
+    <a class="navbar-menu-item darknavbar" id="dark"><i class="iconfont icon-weather"></i></a>
   </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/11/29/2015-11-30-robolectric-3-dot-0yu-android-sdk-23-yi-qi-shi-yong-shi-de-ji-ge-keng/" class="archive-article-date">
-  <time class="dt-published" datetime="2015-11-29T16:08:02.000Z" itemprop="datePublished">Nov 30</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/11/29/2015-11-30-robolectric-3-dot-0yu-android-sdk-23-yi-qi-shi-yong-shi-de-ji-ge-keng/">Robolectric 3.0与Android SDK 23一起使用时的几个坑</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/06/01/2015-06-01-fan-yi-android-m-api-yu-lan/" class="archive-article-date">
-  <time class="dt-published" datetime="2015-06-01T13:59:06.000Z" itemprop="datePublished">Jun 1</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/06/01/2015-06-01-fan-yi-android-m-api-yu-lan/">[翻译]Android M API 概览</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/05/24/2015-05-24-2015-google-i-slash-oda-hui-kan-dian-yu-ce/" class="archive-article-date">
-  <time class="dt-published" datetime="2015-05-24T10:52:23.000Z" itemprop="datePublished">May 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/05/24/2015-05-24-2015-google-i-slash-oda-hui-kan-dian-yu-ce/">2015 Google I/O大会看点预测</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/05/22/2015-05-23-kan-ke-zhi-lu-,zhong-di-qun-xing-bo-ke-shang-de-di-yi-pian-wen-zhang/" class="archive-article-date">
-  <time class="dt-published" datetime="2015-05-22T23:10:17.000Z" itemprop="datePublished">May 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/05/22/2015-05-23-kan-ke-zhi-lu-,zhong-di-qun-xing-bo-ke-shang-de-di-yi-pian-wen-zhang/">坎坷之路，终抵群星——博客上的第一篇文章</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/Octopress/">Octopress</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/Octopress/Github-Pages/">Github Pages</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Google-I-O-2015/">Google I/O 2015</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Google-I-O-2015/Android/">Android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Google-I-O-2015/Android/Nexus/">Nexus</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Google-I-O-2015/Android/Nexus/Moto-360/">Moto 360</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Google-I-O-2015/Android/Nexus/Moto-360/Polymer/">Polymer</a></li></ul></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mobile-App/">Mobile App</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mobile-App/Android/">Android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mobile-App/Android/iOS/">iOS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mobile-App/Android/iOS/HTML5/">HTML5</a></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Robolectric/">Robolectric</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Robolectric/Android/">Android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Robolectric/Android/Unit-Test/">Unit Test</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/android/M-preview/">M preview</a></li></ul></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2016/06/07/2016-06-07-qian-tan-yi-dong-ying-yong-de-ji-zhu-xuan-xing/">浅谈移动应用的技术选型</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/29/2015-11-30-robolectric-3-dot-0yu-android-sdk-23-yi-qi-shi-yong-shi-de-ji-ge-keng/">Robolectric 3.0与Android SDK 23一起使用时的几个坑</a>
-          </li>
-        
-          <li>
-            <a href="/2015/06/01/2015-06-01-fan-yi-android-m-api-yu-lan/">[翻译]Android M API 概览</a>
-          </li>
-        
-          <li>
-            <a href="/2015/05/24/2015-05-24-2015-google-i-slash-oda-hui-kan-dian-yu-ce/">2015 Google I/O大会看点预测</a>
-          </li>
-        
-          <li>
-            <a href="/2015/05/22/2015-05-23-kan-ke-zhi-lu-,zhong-di-qun-xing-bo-ke-shang-de-di-yi-pian-wen-zhang/">坎坷之路，终抵群星——博客上的第一篇文章</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 Siyang Li<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
 </nav>
     
+    <div class="section-wrap">
+      <div class="container">
+        <div class="columns">
+          <main class="main-column"><div class="card card-content">
+  <h1 class="widget-title">归档</h1>
+</div>
+<div class="archive-timeline">
+  
+  
+  
+  <div class="archive-timeline-tag"><span>2016</span></div>
+  
+  
+  <div class="archive-timeline-item">
+    <div class="archive-timeline-post">
+      <div class="card card-content">
+        <div class="archive-timeline-post-date">2016-06-07</div>
+        <div class="archive-timeline-post-content"><a href="/2016/06/07/2016-06-07-qian-tan-yi-dong-ying-yong-de-ji-zhu-xuan-xing/"
+            class="archive-timeline-post-item">浅谈移动应用的技术选型</a></div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="archive-timeline-tag"><span>2015</span></div>
+  
+  
+  <div class="archive-timeline-item">
+    <div class="archive-timeline-post">
+      <div class="card card-content">
+        <div class="archive-timeline-post-date">2015-11-30</div>
+        <div class="archive-timeline-post-content"><a href="/2015/11/29/2015-11-30-robolectric-3-dot-0yu-android-sdk-23-yi-qi-shi-yong-shi-de-ji-ge-keng/"
+            class="archive-timeline-post-item">Robolectric 3.0与Android SDK 23一起使用时的几个坑</a></div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="archive-timeline-item">
+    <div class="archive-timeline-post">
+      <div class="card card-content">
+        <div class="archive-timeline-post-date">2015-06-01</div>
+        <div class="archive-timeline-post-content"><a href="/2015/06/01/2015-06-01-fan-yi-android-m-api-yu-lan/"
+            class="archive-timeline-post-item">[翻译]Android M API 概览</a></div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="archive-timeline-item">
+    <div class="archive-timeline-post">
+      <div class="card card-content">
+        <div class="archive-timeline-post-date">2015-05-24</div>
+        <div class="archive-timeline-post-content"><a href="/2015/05/24/2015-05-24-2015-google-i-slash-oda-hui-kan-dian-yu-ce/"
+            class="archive-timeline-post-item">2015 Google I/O大会看点预测</a></div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="archive-timeline-item">
+    <div class="archive-timeline-post">
+      <div class="card card-content">
+        <div class="archive-timeline-post-date">2015-05-23</div>
+        <div class="archive-timeline-post-content"><a href="/2015/05/22/2015-05-23-kan-ke-zhi-lu-,zhong-di-qun-xing-bo-ke-shang-de-di-yi-pian-wen-zhang/"
+            class="archive-timeline-post-item">坎坷之路，终抵群星——博客上的第一篇文章</a></div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+</main>
+          <aside class="left-column">
+            
+            <div class="card card-author">
+              
+<img src="/images/logo.jpg" class="author-img">
 
+<p class="author-name">Siyang Li</p>
+<p class="author-description">ThoughtWorker, Android developer</p>
+<div class="author-message">
+  <a class="author-posts-count" href="/archives">
+    <span>5</span>
+    <span>文章</span>
+  </a>
+  <a class="author-categories-count" href="/categories">
+    <span>17</span>
+    <span>分类</span>
+  </a>
+  <a class="author-tags-count" href="/tags">
+    <span>0</span>
+    <span>标签</span>
+  </a>
+</div>
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+            </div>
+            
+            <div class="sticky-tablet">
+  
+  
+  
+  <article class="card card-content">
+    <div class="categories-card">
+  <div class="categories-header"><i class="iconfont icon-fenlei" style="padding-right: 2px;"></i>分类</div>
+  <div class="categories-list">
+    
+      <a href="/categories/Blog">
+        <div class="categories-list-item">
+          Blog
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Google I/O 2015">
+        <div class="categories-list-item">
+          Google I/O 2015
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Octopress">
+        <div class="categories-list-item">
+          Octopress
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Android">
+        <div class="categories-list-item">
+          Android
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Github Pages">
+        <div class="categories-list-item">
+          Github Pages
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Nexus">
+        <div class="categories-list-item">
+          Nexus
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Moto 360">
+        <div class="categories-list-item">
+          Moto 360
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Polymer">
+        <div class="categories-list-item">
+          Polymer
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Robolectric">
+        <div class="categories-list-item">
+          Robolectric
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Mobile App">
+        <div class="categories-list-item">
+          Mobile App
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/android">
+        <div class="categories-list-item">
+          android
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Android">
+        <div class="categories-list-item">
+          Android
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Android">
+        <div class="categories-list-item">
+          Android
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/M preview">
+        <div class="categories-list-item">
+          M preview
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Unit Test">
+        <div class="categories-list-item">
+          Unit Test
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/iOS">
+        <div class="categories-list-item">
+          iOS
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/HTML5">
+        <div class="categories-list-item">
+          HTML5
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content">
+    <div class="tags-card">
+  <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>热门标签</div>
+  <div class="tags-list">
+    
+  </div>
+</div>
+  </article>
+  
+  
+  <article class="card card-content widescreen-archive">
+    <div class="archive-card">
+  <div class="archive-card-header"><i class="iconfont icon-wodebaobiao" style="padding-right: 2px;"></i>归档</div>
+  <div class="archive-card-list">
+    
+    
+    
+      
+        
+        
+        
+      
+    
+      
+        
+          <a href="/archives/2016" class="archive-card-list-item">
+              2016
+              <span class="archive-card-list-item-badge">1</span>
+          </a>
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+    
+      <a href="/archives/2015" class="archive-card-list-item">
+          2015
+          <span class="archive-card-list-item-badge">4</span>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+</div>
+          </aside>
+          <aside class="right-column">
+            <div class="sticky-widescreen">
+  
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header"><i class="iconfont icon-wenzhang_huaban" style="padding-right: 2px;"></i>最近文章</div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2016-06-07</div>
+        <a href="/2016/06/07/2016-06-07-qian-tan-yi-dong-ying-yong-de-ji-zhu-xuan-xing/"><div class="recent-posts-item-content">浅谈移动应用的技术选型</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2015-11-30</div>
+        <a href="/2015/11/29/2015-11-30-robolectric-3-dot-0yu-android-sdk-23-yi-qi-shi-yong-shi-de-ji-ge-keng/"><div class="recent-posts-item-content">Robolectric 3.0与Android SDK 23一起使用时的几个坑</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2015-06-01</div>
+        <a href="/2015/06/01/2015-06-01-fan-yi-android-m-api-yu-lan/"><div class="recent-posts-item-content">[翻译]Android M API 概览</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2015-05-24</div>
+        <a href="/2015/05/24/2015-05-24-2015-google-i-slash-oda-hui-kan-dian-yu-ce/"><div class="recent-posts-item-content">2015 Google I/O大会看点预测</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+  <article class="card card-content">
+    <div class="archive-card">
+  <div class="archive-card-header"><i class="iconfont icon-wodebaobiao" style="padding-right: 2px;"></i>归档</div>
+  <div class="archive-card-list">
+    
+    
+    
+      
+        
+        
+        
+      
+    
+      
+        
+          <a href="/archives/2016" class="archive-card-list-item">
+              2016
+              <span class="archive-card-list-item-badge">1</span>
+          </a>
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+    
+      <a href="/archives/2015" class="archive-card-list-item">
+          2015
+          <span class="archive-card-list-item-badge">4</span>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+</div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>Copyright ©
+          
+          2015 -
+          
+          2021
+        </span>
+        <a href="/" class="footer-link">Siyang Li's blog </a>
+      </div>
+    </div>
 
-
+    
+    <div class="footer-dsc">
+      
+      
+      Powered by
+      <a href="https://hexo.io/" class="footer-link" target="_blank" rel="nofollow noopener noreferrer">&nbsp;Hexo </a>
+      
+      
+      <span>&nbsp;|&nbsp;</span>
+      
+      
+      
+      Theme -
+      <a href="https://github.com/theme-kaze" class="footer-link" target="_blank"
+        rel="nofollow noopener noreferrer">&nbsp;Kaze</a>
+      
+    </div>
+    
+    
+    
+    
+</footer>
+  <a role="button" id="scrollbutton" class="basebutton" >
+  <i class="iconfont icon-arrowleft button-icon"></i>
+</a>
+<a role="button" id="menubutton" class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a role="button" id="popbutton" class="basebutton">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a role="button" id="darkbutton" class="basebutton darkwidget">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+  
+  
+  <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img');
+    var i;
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a');
+      wrapper.setAttribute('data-fslightbox', 'gallery');
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'));
+      wrapper.setAttribute('style', 'width: 100%; display: flex; justify-content: center;');
+      img[i].parentElement.insertBefore(wrapper, img[i]);
+      wrapper.appendChild(img[i]);
+    }
+    refreshFsLightbox();
+  }
+</script>
+<script>loadScript("//cdn.jsdelivr.net/npm/fslightbox@3.1.0/index.min.js", addImgLayout)</script>
+  
+  
+  
+<script src="/js/main.js"></script>
 
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
+  
+  
+  <script>
+    var addLazyload = function () {
+      var observer = lozad('.lozad', {
+        load: function (el) {
+          el.srcset = el.getAttribute('data-src');
+        },
+        loaded: function (el) {
+          el.classList.add('loaded');
+        }
+      });
+      observer.observe();
+    }
+  </script>
+  <script>loadScript("/js/lib/lozad.min.js", addLazyload)</script>
+  
+  
 </body>
+
 </html>
