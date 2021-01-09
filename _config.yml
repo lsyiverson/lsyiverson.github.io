@@ -8,7 +8,7 @@ subtitle: 'A ROUGH ROAD LEADS TO THE STARS'
 description: ''
 keywords:
 author: Siyang Li
-language: zh
+language: zh-CN
 timezone: 'Asia/Shanghai'
 
 # URL
@@ -98,7 +98,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: kaze
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

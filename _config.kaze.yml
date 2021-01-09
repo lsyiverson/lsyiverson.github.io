@@ -1,0 +1,35 @@
+#------------------------
+# Header config
+#------------------------
+title: Siyang Li's blog
+author: Siyang Li
+logo_img: /images/logo.jpg
+author_img: /images/logo.jpg
+author_description: ThoughtWorker, Android developer
+
+#------------------------
+# Navbar config
+#------------------------
+menus:
+  home: /
+  archive: /archives
+#  tags: /tags
+  categories: /categories
+#  about: /about
+#  friends: /links
+
+language:
+  - zh-CN
+  - en
+
+analytics:
+  enable: false
+  type: google # google
+  google:
+    id: UA-63325037-1
+
+#------------------------
+# Footer
+#------------------------
+footer:
+  copyYear: 2015
