@@ -4,7 +4,9 @@ title: "浅谈移动应用的技术选型"
 date: 2016-06-07 15:21:07 +0800
 comments: true
 published: true
-categories: [Mobile App, Android, iOS, HTML5]
+tags: [Mobile, Android, iOS, HTML5, ReactNative]
+categories:
+  - [Mobile]
 ---
 在这个巨变的时代，技术选型是个很难做决定的事情。而移动应用的技术在几个巨头（Google，Facebook，Apple etc.）的带动下更是日新月异。所以说要选择一个适合业务需求并且匹配开发人员能力的技术方案并不是一件简单的事情。我也只是在移动开发上做过一点微小的工作，此处仅能抛个砖，希望各位有玉的大神尽管砸过来。
 

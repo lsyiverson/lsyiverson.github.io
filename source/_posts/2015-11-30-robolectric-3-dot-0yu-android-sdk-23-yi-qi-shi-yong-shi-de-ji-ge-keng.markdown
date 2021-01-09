@@ -3,10 +3,13 @@ layout: post
 title: "Robolectric 3.0与Android SDK 23一起使用时的几个坑"
 date: 2015-11-30 00:08:02 +0800
 comments: true
+tags: 
+  - Robolectric
+  - Android
+  - UnitTest
 categories: 
-- Robolectric
-- Android
-- Unit Test
+  - [Mobile]
+  - [Android]
 ---
 
 这两天在写一个简单地Android应用，准备顺手练练TDD。为了能够达到快速开发的需求，就选择了Robolectric这个测试框架来进行单元测试。之前已经在正式项目中用过Robolectric，本以为应该没有什么可能遇到的坑，结果却截然相反。

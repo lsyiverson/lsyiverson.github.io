@@ -3,12 +3,12 @@ layout: post
 title: 2015 Google I/O大会看点预测
 date: '2015-05-24 18:52:23 +0800'
 comments: true
-categories:
-  - Google I/O 2015
+tags:
   - Android
   - Nexus
-  - Moto 360
+  - Moto360
   - Polymer
+categories: Google
 ---
 
 2015年的Google I/O大会将在5月28日召开，每年的I/O大会总会发布许多新技术和新产品，在这里列举了一些科技媒体的预测和我自己的一些看法，等到5月28日过后，再来看看这些预测有哪些是准确的。

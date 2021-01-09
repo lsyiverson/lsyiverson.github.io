@@ -3,7 +3,8 @@ layout: post
 title: "坎坷之路，终抵群星——博客上的第一篇文章"
 date: 2015-05-23 19:10:17 +0800
 comments: true
-categories: [Blog, Octopress, Github Pages]
+tags: [Blog, Octopress, GithubPages]
+categories: Blog
 ---
 
 很久之前便有了搭建一个自己的博客的打算，不过之前由于长期存在的拖延症的问题，一直没有行动。后面终于下定决心要开始做这个事，VPS也买了，域名也买了，不过终究还是没有落实到行动上。直到最近进入到新的项目组，碰到了刚刚出差回来的小明同学，在看过了小明同学的Blog过后，才终于决定要付诸行动。

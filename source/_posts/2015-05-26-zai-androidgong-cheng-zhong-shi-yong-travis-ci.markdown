@@ -3,7 +3,7 @@ layout: post
 title: "在Android工程中使用travis-ci"
 date: 2015-05-26 22:08:43 +0800
 comments: true
-categories: [Android, travis-ci, continuous integration]
+tags: [Android, travis-ci, continuous-integration]
 published: false
 ---
 

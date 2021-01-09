@@ -3,7 +3,10 @@ layout: post
 title: "[翻译]Android M API 概览"
 date: 2015-06-01 21:59:06 +0800
 comments: true
-categories: [android, M preview]
+tags: [Android, M-preview]
+categories:
+  - [Mobile]
+  - [Android]
 ---
 本文翻译自Android开发者网站[http://developer.android.com/preview/api-overview.html](http://developer.android.com/preview/api-overview.html)
 
